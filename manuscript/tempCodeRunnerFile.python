@@ -1,0 +1,89 @@
+import numpy as np
+import gurobipy as gp
+from gurobipy import GRB
+
+# 定义直接数据集
+data_values = np.array([
+    # 2020年
+    [
+        [70, 85, 90, 60, 75],   # A
+        [65, 80, 85, 70, 80],   # B
+        [80, 78, 88, 65, 85],   # C
+        [60, 82, 83, 75, 70]    # D
+    ],
+    # 2021年
+    [
+        [75, 88, 92, 62, 77],   # A
+        [68, 83, 87, 72, 82],   # B
+        [82, 80, 90, 68, 87],   # C
+        [65, 85, 85, 78, 72]    # D
+    ],
+    # 2022年
+    [
+        [78, 90, 94, 64, 79],   # A
+        [70, 85, 89, 74, 84],   # B
+        [85, 82, 92, 70, 89],   # C
+        [68, 88, 87, 80, 74]    # D
+    ]
+])
+
+T, J, I = data_values.shape
+lambda_smooth = 10  # 平滑性惩罚参数
+
+# 创建Gurobi模型
+m = gp.Model("DynamicWeighting")
+
+# 定义权重变量
+w = m.addVars(T, I, lb=0, ub=1, vtype=GRB.CONTINUOUS, name="w")
+
+# 定义得分
+s = {}
+for t in range(T):
+    for j in range(J):
+        s[t, j] = gp.quicksum(data_values[t, j, i] * w[t, i] for i in range(I))
+
+# 均值
+mean_s = {}
+for t in range(T):
+    mean_s[t] = (1 / J) * gp.quicksum(s[t, j] for j in range(J))
+
+# 得分方差
+score_variance = gp.quicksum(
+    (s[t, j] - mean_s[t]) * (s[t, j] - mean_s[t])
+    for t in range(T) for j in range(J)
+)
+
+# 平滑罚项
+smooth_penalty = gp.quicksum(
+    (w[t, i] - w[t-1, i]) * (w[t, i] - w[t-1, i])
+    for t in range(1, T) for i in range(I)
+)
+
+# 目标
+m.setObjective(score_variance - lambda_smooth * smooth_penalty, GRB.MAXIMIZE)
+
+# 约束
+for t in range(T):
+    m.addConstr(gp.quicksum(w[t, i] for i in range(I)) == 1, name=f"sum_to_1_{t}")
+
+# 求解
+m.optimize()
+
+# 取出最优权重
+W_opt = np.zeros((T, I))
+for t in range(T):
+    for i in range(I):
+        W_opt[t, i] = w[t, i].X
+
+# 计算得分
+scores_by_year = []
+for t in range(T):
+    X_t = data_values[t]
+    s_t = X_t @ W_opt[t]
+    scores_by_year.append(s_t)
+
+# 打印结果
+for t in range(T):
+    print(f"\n=== 第 {2020 + t} 年 ===")
+    print(f"动态优化后的权重 w_{2020 + t}: {np.round(W_opt[t], 4)}")
+    print(f"对象得分 s_{2020 + t}: {np.round(scores_by_year[t], 4)}")

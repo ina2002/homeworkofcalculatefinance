@@ -1,0 +1,285 @@
+\documentclass[nonblindrev]{write_paper} 
+\usepackage{amsmath}
+\usepackage{ctex}
+\usepackage{url}
+%\usepackage{algorithm}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{algpseudocode}
+\usepackage{subfigure}
+\usepackage{epsfig}
+\usepackage[utf8]{inputenc}
+\usepackage[linesnumbered, ruled, vlined]{algorithm2e}
+\usepackage{amsmath}
+%链接点击跳转
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,      
+  urlcolor=blue,
+  citecolor=blue,
+}
+\makeatletter
+\@ifundefined{newblock}{\def\newblock{\hskip .11em plus .33em minus .07em}}{}
+\makeatother
+
+\usepackage{enumitem}
+\makeatletter
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-1ex \@plus -1ex \@minus -.1ex}%
+                                   {1 ex \@plus.1ex}%
+                                   {\normalfont\large\bfseries}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                     {-1ex\@plus -1ex \@minus -.1ex}%
+                                     {1ex \@plus .1ex}%
+                                     {\normalfont \normalsize \bfseries}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                                     {-1ex\@plus -1ex \@minus -.1ex}%
+                                     {1ex \@plus .1ex}%
+                                     {\normalfont\normalsize\bfseries}}
+\makeatother
+
+\renewcommand{\theARTICLETOP}{}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{}
+\fancyhead[RE,LO]{\scriptsize{计算金融与仿真课程论文} }
+\fancyfoot[CE,CO]{\leftmark}
+\cfoot{\thepage}
+
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+
+\OneAndAHalfSpacedXI
+\usepackage{color}
+\usepackage{soul}
+
+\DeclareMathOperator{\E}{\mathbb{E}}
+\DeclareMathOperator{\R}{\mathbb{R}}
+\DeclareMathOperator{\B}{\mathbb{B}}
+\DeclareMathOperator{\Z}{\mathbb{Z}}
+
+%%-----------------------------------------
+%% 将作者-年份改为数字制
+\usepackage[numbers]{natbib}  % 关键：numbers选项
+% \bibpunct{[}{]}{,}{n}{}{,}   % 若需要可自行指定标点
+%%-----------------------------------------
+
+% 如果之前有 \bibpunct 设置, 请注释掉或删除以免冲突
+% \bibpunct[, ]{(}{)}{,}{a}{}{,}%  <-- 原先作者-年份制, 需要注释或删除
+
+\TheoremsNumberedThrough
+\EquationsNumberedThrough
+\MANUSCRIPTNO{} 
+\newtheorem{prop}{{Proposition}}
+%\newtheorem{lemma}{{Lemma}}
+
+%\renewcommand{\algorithmicrequire}{{Input:}}
+%\renewcommand{\algorithmicensure}{{Output:}}
+
+\newtheorem{implication}{\noindent{Implication}}
+
+\newcommand{\YH}[1]{{\color{blue}#1}}
+\newcommand{\JJ}[1]{{\color{black}#1}}
+\newcommand{\eat}[1]{}
+\usepackage{graphicx}
+
+\usepackage{endnotes}
+\let\footnote=\endnote
+\def\notesname{Endnotes}
+
+\usepackage[symbol]{footmisc}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\ml}[1]{\mathcal{#1}}
+\newcommand{\mb}[1]{\mathbb{#1}}
+
+\begin{document}
+
+% 整页垂直居中
+\vspace*{\fill}
+
+\begin{center}
+
+    \includegraphics[width=0.4\textwidth]{Figures/校徽.png}\\[1cm]
+       \Huge \bfseries
+       \textbf{计算金融与仿真}\\[0.5cm]
+       \Huge \bfseries
+       \textbf{课程论文}\\[2cm]
+    
+    \Large
+    \begin{table}[htbp]
+    \centering
+    \Large
+    \begin{tabular}{ll}
+    \textbf{论文题目 }: & 计算金融与仿真 \\
+    \textbf{学生姓名}: & 李晶晶 \quad 张璐 \quad 朱冯婧 \\
+    \textbf{指导老师}: & 邓志斌 
+    \end{tabular}
+    \end{table}
+
+    
+
+
+\end{center}
+
+\vspace*{\fill}
+\newpage
+
+
+
+
+
+\section{投资组合选择介绍}
+\section{模型建立}
+\subsection*{决策变量}
+\[
+x_i \in \{0, 1\}, \quad i = 1, 2, \ldots, N
+\]
+其中，
+\begin{itemize}
+  \item $x_i = 1$ 表示选择资助第 $i$ 个贷款对象；
+  \item $x_i = 0$ 表示不选择。
+\end{itemize}
+
+\subsection*{参数说明}
+\begin{itemize}
+  \item $A_i$：第 $i$ 个贷款的金额；
+  \item $r_i$：第 $i$ 个贷款的利率；
+  \item $P_i$：第 $i$ 个贷款的违约概率；
+  \item $B$：总投资预算；
+  \item $R_{\max}$：允许的最大违约风险；
+  \item $G_k$：第 $k$ 个信用等级的贷款集合；
+  \item $\alpha_k$：第 $k$ 个信用等级的最大投资比例；
+  \item $m$：最多选择的贷款数量（Top-$m$）。
+\end{itemize}
+
+\subsection*{模型形式}
+\begin{equation}
+\begin{aligned}
+\max_{x_i \in \{0,1\}} \quad & \sum_{i=1}^N x_i A_i \left[ r_i(1 - P_i) - P_i \right] \\
+\text{s.t.} \quad
+& \sum_{i=1}^N x_i A_i \le B \quad \text{(预算限制)} \\
+& \sum_{i \in G_k} x_i A_i \le \alpha_k B, \quad \forall k \quad \text{(信用等级比例约束)} \\
+& \sum_{i=1}^N x_i A_i P_i \le R_{\max} \quad \text{(风险控制)} \\
+& \sum_{i=1}^N x_i \le m \quad \text{(Top-$m$ 选择)}
+\end{aligned}
+\label{eq:main_model} 
+\end{equation}
+
+
+\begin{equation}
+\begin{aligned}
+\max_{x_i \in \{0,1\}} \quad & \sum_{i=1}^N x_i A_i \left[ r_i(1 - P_i) - P_i \right] \\
+\text{s.t.} \quad
+& \sum_{i=1}^N x_i A_i \le B \quad \text{(预算限制)} \\
+& \sum_{i \in G_k} x_i A_i \le \alpha_k B, \quad \forall k \quad \text{(信用等级比例约束)} \\
+& \sum_{i=1}^N x_i A_i P_i \le R_{\max} \quad \text{(期望风险控制)} \\
+& \sum_{i=1}^N x_i \le m \quad \text{(Top-$m$ 选择)} \\
+& \sum_{i=1}^N x_i A_i \cdot \tilde{P}_i^{(s)} - \eta \le \mathcal{M} z_s, \quad \forall s=1,\dots,S \quad \text{(VaR限制)} \\
+& \sum_{s=1}^S z_s \le (1 - \beta) S \\
+& z_s \in \{0,1\}, \quad \eta \in \mathbb{R}
+\end{aligned}
+\label{eq:var_model}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+\max_{x_i \in \{0,1\}} \quad & \sum_{i=1}^N x_i A_i \left[ r_i(1 - P_i) - P_i \right] \\
+\text{s.t.} \quad
+& \sum_{i=1}^N x_i A_i \le B \quad \text{(预算限制)} \\
+& \sum_{i \in G_k} x_i A_i \le \alpha_k B, \quad \forall k \quad \text{(信用等级比例约束)} \\
+& \sum_{i=1}^N x_i A_i P_i \le R_{\max} \quad \text{(期望风险控制)} \\
+& \sum_{i=1}^N x_i \le m \quad \text{(Top-$m$ 选择)} \\
+& \xi_s \ge \sum_{i=1}^N x_i A_i \cdot \tilde{P}_i^{(s)} - \eta, \quad \forall s = 1,\dots,S \quad \text{(场景损失)} \\
+& \eta + \frac{1}{S(1 - \beta)} \sum_{s=1}^S \xi_s \le \text{CVaR}_{\max} \quad \text{(CVaR限制)} \\
+& \xi_s \ge 0, \quad \eta \in \mathbb{R}
+\end{aligned}
+\label{eq:cvar_model}
+\end{equation}
+
+\section{算法设计}
+
+ 
+\begin{algorithm}[H]
+\caption{启发式算法：贷款组合优化（含CVaR控制）}
+\KwIn{
+贷款数据 $\{A_i, r_i, P_i\}_{i=1}^N$；预算 $B$；Top-$m$ 限制；CVaR 上限 $\text{CVaR}_{\max}$；置信水平 $\beta$；\\
+模拟场景矩阵 $\tilde{P}_i^{(s)} \in \{0,1\}^{S \times N}$
+}
+\KwOut{最优选择向量 $x^* \in \{0,1\}^N$}
+
+$x_{\text{best}} \gets \mathbf{0}$；\tcp*{初始为空解}
+
+根据评分 $\text{score}_i = A_i[r_i(1 - P_i) - P_i]$ 降序排列贷款\\
+$total\_budget \gets 0$, $total\_selected \gets 0$, $x_{\text{current}} \gets \mathbf{0}$
+
+\ForEach{$i$ in 排序后的贷款列表}{
+  \If{$total\_budget + A_i > B$ 或 $total\_selected + 1 > m$}{
+    continue\;
+  }
+  $x_{\text{current}}[i] \gets 1$\;
+  $total\_budget \gets total\_budget + A_i$\;
+  $total\_selected \gets total\_selected + 1$\;
+}
+
+\If{\texttt{Feasible}($x_{\text{current}}$)}{
+  $x_{\text{best}} \gets x_{\text{current}}$\;
+}
+
+\BlankLine
+\SetKwFunction{FMain}{Feasible}
+\SetKwProg{Fn}{Function}{:}{}
+\Fn{\FMain{$x$}}{
+  \For{$s \gets 1$ \KwTo $S$}{
+    $L_s \gets \sum_{i=1}^N x_i A_i \cdot \tilde{P}_i^{(s)}$\;
+  }
+  $\eta \gets$ $\beta$ 分位点的 $\{L_s\}$\;
+  \For{$s \gets 1$ \KwTo $S$}{
+    $\xi_s \gets \max(L_s - \eta, 0)$\;
+  }
+  $\text{CVaR}_\beta(x) \gets \eta + \frac{1}{S(1 - \beta)} \sum_{s=1}^S \xi_s$\;
+  \Return 是否满足 $\text{CVaR}_\beta(x) \le \text{CVaR}_{\max}$ 且满足其他约束\;
+}
+
+\Return $x_{\text{best}}$\;
+\end{algorithm}
+
+\section{案例研究}
+\label{sec:case_study}
+\subsection{数据集描述}
+
+\label{subsec:dataset_description}
+
+本研究使用的数据集来自 Lending Club 平台，原始数据由 Kaggle 网站公开提供\footnote{\url{https://www.kaggle.com/datasets/wordsforthewise/lending-club}}。Lending Club 是美国最大的网络借贷平台之一，提供了详尽的个人借款申请及其还款情况的数据，广泛应用于学术界和工业界进行信贷风险评估、违约预测及投资组合优化等研究。
+
+该数据集包含了从 2007 年至 2018 年的借款记录，共计数百万条样本。每条记录对应一笔贷款申请，涵盖了包括贷款金额、利率、借款人信用等级、债务收入比、贷款期限、还款状态、就业年限、收入、地址状态、房屋所有权、FICO 评分区间等在内的多维度信息。
+
+在本研究中，我们主要筛选并保留以下变量用于建模分析：
+
+\begin{itemize}
+  \item \textbf{loan\_amnt}: 借款人申请的贷款金额，作为 $A_i$；
+  \item \textbf{int\_rate}: 借款合同中约定的年利率，用于计算收益率 $r_i$；
+  \item \textbf{grade}: 借款人的信用等级（A 至 G），用于分组限制；
+  \item \textbf{loan\_status}: 实际贷款的还款状态（如 Fully Paid、Charged Off），用于推断违约情况；
+  \item \textbf{annual\_inc}: 借款人年收入；
+  \item \textbf{dti}: 债务收入比，用于辅助风险刻画；
+  \item \textbf{term}: 贷款期限（如 36 months 或 60 months）；
+  \item \textbf{emp\_length}: 借款人工作年限；
+  \item \textbf{addr\_state}: 借款人所在州；
+  \item \textbf{fico\_range\_high, fico\_range\_low}: 借款人 FICO 信用评分区间；
+\end{itemize}
+
+为了满足模型中对违约概率 $P_i$ 的需求，我们将 ``loan\_status'' 字段中状态为 ``Charged Off'' 的贷款视为违约样本，其余如 ``Fully Paid''、``Current'' 等状态作为非违约样本，并基于历史频率法估算每一类贷款的违约概率。
+
+此外，为模拟贷款违约的风险场景，我们以借款人的信用等级、FICO评分和历史违约频率为依据，构建了 $S$ 个 Monte Carlo 风险场景，用于后续 CVaR 优化模型的风险评估。
+
+通过上述数据处理步骤，最终形成了一个结构规范、信息完备、适用于组合优化问题的数据集，为后续实证分析与建模提供了坚实的数据基础。
+
+\newpage
+\bibliographystyle{unsrtnat} 
+\bibliography{ref}
+
+\end{document}
