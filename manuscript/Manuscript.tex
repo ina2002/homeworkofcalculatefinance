@@ -277,6 +277,101 @@ $total\_budget \gets 0$, $total\_selected \gets 0$, $x_{\text{current}} \gets \m
 此外，为模拟贷款违约的风险场景，我们以借款人的信用等级、FICO评分和历史违约频率为依据，构建了 $S$ 个 Monte Carlo 风险场景，用于后续 CVaR 优化模型的风险评估。
 
 通过上述数据处理步骤，最终形成了一个结构规范、信息完备、适用于组合优化问题的数据集，为后续实证分析与建模提供了坚实的数据基础。
+\subsection{使用机器学习预测违约概率 $P_i$}
+\label{subsec:predict_p_i}
+
+尽管本研究使用的数据集中所有贷款均已获得实际资助，但在资金有限、需进行优选配置的情境下，我们仍需要对这些已发放贷款的还款风险进行再评估。为此，我们引入机器学习方法，对每笔贷款的未来违约概率 $P_i$ 进行预测建模，以作为后续优化模型中的风险输入参数。
+
+\paragraph{建模目标} 
+预测函数的目标是：对于每笔已发放贷款 $i$，根据其已知特征向量 $\mathbf{x}_i$，估计其在未来发生违约的概率 $P_i = \mathbb{P}(y_i = 1 \mid \mathbf{x}_i)$。其中，$y_i=1$ 表示贷款最终发生违约（如状态为 \texttt{Charged Off}），$y_i=0$ 表示贷款最终还清（如状态为 \texttt{Fully Paid}）。
+
+\paragraph{特征构造}
+我们基于借款人基本属性、贷款合同信息以及信用评级等信息构建预测特征集，涵盖但不限于以下变量：
+
+\begin{itemize}
+  \item \textbf{loan\_amnt}：贷款金额；
+  \item \textbf{term}：贷款期限；
+  \item \textbf{int\_rate}：贷款利率；
+  \item \textbf{grade} 和 \textbf{sub\_grade}：Lending Club 信用评级；
+  \item \textbf{emp\_length}：工作年限；
+  \item \textbf{home\_ownership}：住房类型；
+  \item \textbf{annual\_inc}：年收入；
+  \item \textbf{dti}：债务收入比；
+  \item \textbf{purpose}：贷款用途；
+  \item \textbf{fico\_range\_high / low}：信用评分；
+\end{itemize}
+
+\paragraph{建模方法}
+考虑到目标变量仍是二元状态（违约 / 未违约），我们采用监督学习的二分类方法进行建模。尝试的模型包括逻辑回归（Logistic Regression）、随机森林（Random Forest）、梯度提升树（GBDT）、极端梯度提升（XGBoost）等。
+
+由于样本中违约样本占比相对较小，我们在训练过程中采用类别加权、欠采样等方式处理类别不平衡问题。
+
+\paragraph{训练与评估}
+
+我们将全部已发放贷款随机划分为训练集（70\%）与测试集（30\%），使用交叉验证调优参数，并基于测试集评估模型表现。评价指标包括准确率（Accuracy）、AUC 值（Area Under the ROC Curve）、F1 分数等。
+
+最终，我们选择 AUC 表现最优的模型用于对所有贷款样本生成违约概率预测值 $\hat{P}_i$，作为后续优化模型中的输入。
+
+\paragraph{说明}
+虽然原始数据中每笔贷款都已实际放款，但我们的建模任务是为现实中的“再选择”提供依据。即在预算受限、资源不足时，如何在这些真实已放款的贷款中优先挑选违约概率低、预期收益高的子集，构建一个更稳健的投资组合。因此，$\hat{P}_i$ 的预测并非用于决定放款与否，而是作为组合优化的“风险估计量”，用于构建期望收益与 CVaR 等风险指标。
+\subsection{使用算法求解原始模型、VaR模型与CVaR模型}
+\label{subsec:model_solving}
+
+在本节中，我们分别构建并求解三类贷款筛选优化模型：原始模型、VaR（Value at Risk）模型和 CVaR（Conditional Value at Risk）模型。三者均以最大化投资收益为目标，并在此基础上逐步引入风险控制手段，以模拟实际投资场景中对风险的不同管控需求。
+
+\vspace{1em}
+\paragraph{原始模型（期望损失约束）}
+原始模型以最大化期望净收益为目标，同时设置多个线性约束，确保预算控制、信用等级平衡与风险控制等现实要求。其数学模型如下所示：
+
+\begin{align*}
+\max_{x_i \in \{0,1\}} \quad & \sum_{i=1}^N x_i A_i \left[ r_i(1 - P_i) - P_i \right] \\
+\text{s.t.} \quad
+& \sum_{i=1}^N x_i A_i \le B \quad \text{(预算限制)} \\
+& \sum_{i \in G_k} x_i A_i \le \alpha_k B, \quad \forall k \quad \text{(信用等级比例约束)} \\
+& \sum_{i=1}^N x_i A_i P_i \le R_{\max} \quad \text{(期望损失控制)} \\
+& \sum_{i=1}^N x_i \le m \quad \text{(Top-$m$ 限制)}
+\end{align*}
+
+该模型为典型的 0-1 整数规划问题，可使用 Gurobi 等商业求解器在中小规模下获得最优解。
+
+\vspace{1em}
+\paragraph{VaR 模型（引入分位损失约束）}
+
+VaR 模型进一步考虑极端情境下的最大可能损失，将分位数损失 $\text{VaR}_\beta$ 作为新的风险控制手段。通过构造 Monte Carlo 风险场景，我们对贷款可能发生的违约路径进行模拟，并引入辅助变量 $z_s \in \{0,1\}$ 表示某个场景是否超过 VaR 阈值 $\eta$。其模型如下：
+
+\begin{align*}
+\max_{x_i \in \{0,1\}} \quad & \sum_{i=1}^N x_i A_i \left[ r_i(1 - P_i) - P_i \right] \\
+\text{s.t.} \quad
+& \text{原始模型中所有约束（除期望损失）} \\
+& \sum_{i=1}^N x_i A_i \cdot \tilde{P}_i^{(s)} - \eta \le \mathcal{M} z_s, \quad \forall s = 1, \dots, S \\
+& \sum_{s=1}^S z_s \le (1 - \beta) S \\
+& z_s \in \{0,1\}, \quad \eta \in \mathbb{R}
+\end{align*}
+
+由于 VaR 对应的非凸约束结构和0-1变量使得模型求解复杂度较高，通常只适用于中小规模问题，且求解结果可能存在不连续性。
+
+\vspace{1em}
+\paragraph{CVaR 模型（引入条件期望损失约束）}
+
+为克服 VaR 模型不可微、不可凸等缺点，CVaR 模型通过引入辅助变量 $\xi_s \ge 0$ 和 VaR 估计值 $\eta$，以线性结构实现对尾部风险的精确控制。其约束具有良好的可解性与可扩展性，广泛应用于实际金融优化问题中。模型如下：
+
+\begin{align*}
+\max_{x_i \in \{0,1\}} \quad & \sum_{i=1}^N x_i A_i \left[ r_i(1 - P_i) - P_i \right] \\
+\text{s.t.} \quad
+& \text{原始模型中所有约束（除期望损失）} \\
+& \xi_s \ge \sum_{i=1}^N x_i A_i \cdot \tilde{P}_i^{(s)} - \eta, \quad \forall s = 1, \dots, S \\
+& \eta + \frac{1}{S(1 - \beta)} \sum_{s=1}^S \xi_s \le \text{CVaR}_{\max} \\
+& \xi_s \ge 0, \quad \eta \in \mathbb{R}
+\end{align*}
+
+该模型可转化为混合整数线性规划（MILP）形式，使用 Gurobi 等求解器可以在合理时间内获得精确解，特别适合场景规模较大的优化问题。
+
+\vspace{1em}
+\paragraph{求解策略}
+
+在三类模型中，原始模型为最简形式，适用于风险可控或追求高收益的情境；VaR 模型在表达风险容忍边界方面具有直观优势；而 CVaR 模型则提供了更稳健的风险控制能力和更优的优化特性。
+
+考虑到实际求解效率与解的稳定性，本研究在实现中主要采用 CVaR 模型进行主模型求解，并通过 Gurobi 求解器实现精确建模与最优解求取。对于大规模场景（如 $S > 1000$），可结合启发式算法进行初解生成与变量预选，从而提升整体求解效率。
 
 \newpage
 \bibliographystyle{unsrtnat} 

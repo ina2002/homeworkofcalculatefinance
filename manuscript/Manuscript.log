@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.5)  20 MAY 2025 14:19
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.5)  20 MAY 2025 14:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -841,17 +841,41 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 
 [4]
 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 280.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 280.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 280.
+
+
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
 (fancyhdr)                Make it at least 12.65999pt, for example:
 (fancyhdr)                \setlength{\footskip}{12.65999pt}.
 
-[5] (./Manuscript.bbl)
+[5]
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
 (fancyhdr)                Make it at least 12.65999pt, for example:
 (fancyhdr)                \setlength{\footskip}{12.65999pt}.
 
-[6] (./Manuscript.aux)
+[6]
+
+Package fancyhdr Warning: \footskip is too small (0.0pt): 
+(fancyhdr)                Make it at least 12.65999pt, for example:
+(fancyhdr)                \setlength{\footskip}{12.65999pt}.
+
+[7] (./Manuscript.bbl)
+
+Package fancyhdr Warning: \footskip is too small (0.0pt): 
+(fancyhdr)                Make it at least 12.65999pt, for example:
+(fancyhdr)                \setlength{\footskip}{12.65999pt}.
+
+[8] (./Manuscript.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/07/14>
@@ -869,16 +893,16 @@ Package rerunfilecheck Warning: File `Manuscript.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `Manuscript.out':
-(rerunfilecheck)             Before: 9A8C4469AB244ABD3762AA4AD15A013D;542
-(rerunfilecheck)             After:  C281536A81312336C69C1F4B729A426C;441.
+(rerunfilecheck)             Before: 8073DD3E2A5B0AE4E5E5835BCBAC217C;616
+(rerunfilecheck)             After:  375D266E42374EAC29AF07D6DF524F0D;840.
  ) 
 Here is how much of TeX's memory you used:
- 19654 strings out of 474773
- 396082 string characters out of 5757730
- 1941842 words of memory out of 5000000
- 41461 multiletter control sequences out of 15000+600000
+ 19785 strings out of 474773
+ 403822 string characters out of 5757730
+ 1944842 words of memory out of 5000000
+ 41592 multiletter control sequences out of 15000+600000
  597433 words of font info for 152 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  93i,15n,97p,361b,636s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Manuscript.pdf (6 pages).
+Output written on Manuscript.pdf (8 pages).
