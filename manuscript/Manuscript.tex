@@ -321,48 +321,20 @@ $total\_budget \gets 0$, $total\_selected \gets 0$, $x_{\text{current}} \gets \m
 
 \vspace{1em}
 \paragraph{原始模型（期望损失约束）}
-原始模型以最大化期望净收益为目标，同时设置多个线性约束，确保预算控制、信用等级平衡与风险控制等现实要求。其数学模型如下所示：
-
-\begin{align*}
-\max_{x_i \in \{0,1\}} \quad & \sum_{i=1}^N x_i A_i \left[ r_i(1 - P_i) - P_i \right] \\
-\text{s.t.} \quad
-& \sum_{i=1}^N x_i A_i \le B \quad \text{(预算限制)} \\
-& \sum_{i \in G_k} x_i A_i \le \alpha_k B, \quad \forall k \quad \text{(信用等级比例约束)} \\
-& \sum_{i=1}^N x_i A_i P_i \le R_{\max} \quad \text{(期望损失控制)} \\
-& \sum_{i=1}^N x_i \le m \quad \text{(Top-$m$ 限制)}
-\end{align*}
-
+原始模型以最大化期望净收益为目标，同时设置多个线性约束，确保预算控制、信用等级平衡与风险控制等现实要求。
 该模型为典型的 0-1 整数规划问题，可使用 Gurobi 等商业求解器在中小规模下获得最优解。
 
 \vspace{1em}
 \paragraph{VaR 模型（引入分位损失约束）}
 
-VaR 模型进一步考虑极端情境下的最大可能损失，将分位数损失 $\text{VaR}_\beta$ 作为新的风险控制手段。通过构造 Monte Carlo 风险场景，我们对贷款可能发生的违约路径进行模拟，并引入辅助变量 $z_s \in \{0,1\}$ 表示某个场景是否超过 VaR 阈值 $\eta$。其模型如下：
-
-\begin{align*}
-\max_{x_i \in \{0,1\}} \quad & \sum_{i=1}^N x_i A_i \left[ r_i(1 - P_i) - P_i \right] \\
-\text{s.t.} \quad
-& \text{原始模型中所有约束（除期望损失）} \\
-& \sum_{i=1}^N x_i A_i \cdot \tilde{P}_i^{(s)} - \eta \le \mathcal{M} z_s, \quad \forall s = 1, \dots, S \\
-& \sum_{s=1}^S z_s \le (1 - \beta) S \\
-& z_s \in \{0,1\}, \quad \eta \in \mathbb{R}
-\end{align*}
+VaR 模型进一步考虑极端情境下的最大可能损失，将分位数损失 $\text{VaR}_\beta$ 作为新的风险控制手段。通过构造 Monte Carlo 风险场景，我们对贷款可能发生的违约路径进行模拟，并引入辅助变量 $z_s \in \{0,1\}$ 表示某个场景是否超过 VaR 阈值 $\eta$。
 
 由于 VaR 对应的非凸约束结构和0-1变量使得模型求解复杂度较高，通常只适用于中小规模问题，且求解结果可能存在不连续性。
 
 \vspace{1em}
 \paragraph{CVaR 模型（引入条件期望损失约束）}
 
-为克服 VaR 模型不可微、不可凸等缺点，CVaR 模型通过引入辅助变量 $\xi_s \ge 0$ 和 VaR 估计值 $\eta$，以线性结构实现对尾部风险的精确控制。其约束具有良好的可解性与可扩展性，广泛应用于实际金融优化问题中。模型如下：
-
-\begin{align*}
-\max_{x_i \in \{0,1\}} \quad & \sum_{i=1}^N x_i A_i \left[ r_i(1 - P_i) - P_i \right] \\
-\text{s.t.} \quad
-& \text{原始模型中所有约束（除期望损失）} \\
-& \xi_s \ge \sum_{i=1}^N x_i A_i \cdot \tilde{P}_i^{(s)} - \eta, \quad \forall s = 1, \dots, S \\
-& \eta + \frac{1}{S(1 - \beta)} \sum_{s=1}^S \xi_s \le \text{CVaR}_{\max} \\
-& \xi_s \ge 0, \quad \eta \in \mathbb{R}
-\end{align*}
+为克服 VaR 模型不可微、不可凸等缺点，CVaR 模型通过引入辅助变量 $\xi_s \ge 0$ 和 VaR 估计值 $\eta$，以线性结构实现对尾部风险的精确控制。其约束具有良好的可解性与可扩展性，广泛应用于实际金融优化问题中。
 
 该模型可转化为混合整数线性规划（MILP）形式，使用 Gurobi 等求解器可以在合理时间内获得精确解，特别适合场景规模较大的优化问题。
 

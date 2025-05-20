@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.5)  20 MAY 2025 14:40
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.5)  20 MAY 2025 14:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -884,23 +884,14 @@ L3 programming layer <2022/07/14>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `Manuscript.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Manuscript.out':
-(rerunfilecheck)             Before: 8073DD3E2A5B0AE4E5E5835BCBAC217C;616
-(rerunfilecheck)             After:  375D266E42374EAC29AF07D6DF524F0D;840.
+Package rerunfilecheck Info: File `Manuscript.out' has not changed.
+(rerunfilecheck)             Checksum: 375D266E42374EAC29AF07D6DF524F0D;840.
  ) 
 Here is how much of TeX's memory you used:
- 19785 strings out of 474773
- 403822 string characters out of 5757730
- 1944842 words of memory out of 5000000
- 41592 multiletter control sequences out of 15000+600000
+ 19734 strings out of 474773
+ 400902 string characters out of 5757730
+ 1945842 words of memory out of 5000000
+ 41541 multiletter control sequences out of 15000+600000
  597433 words of font info for 152 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  93i,15n,97p,361b,636s stack positions out of 10000i,1000n,20000p,200000b,200000s
