@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.5)  20 MAY 2025 14:41
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.5)  20 MAY 2025 15:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -831,9 +831,6 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{12.65999pt}.
 
 [3]
-\openout3 = `Manuscript.ent'.
-
-
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
 (fancyhdr)                Make it at least 12.65999pt, for example:
@@ -870,6 +867,9 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{12.65999pt}.
 
 [7] (./Manuscript.bbl)
+\openout3 = `Manuscript.ent'.
+
+
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
 (fancyhdr)                Make it at least 12.65999pt, for example:
@@ -884,14 +884,23 @@ L3 programming layer <2022/07/14>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package rerunfilecheck Info: File `Manuscript.out' has not changed.
-(rerunfilecheck)             Checksum: 375D266E42374EAC29AF07D6DF524F0D;840.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `Manuscript.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Manuscript.out':
+(rerunfilecheck)             Before: 375D266E42374EAC29AF07D6DF524F0D;840
+(rerunfilecheck)             After:  E32DB129D9B8E341EF94997515C0460D;994.
  ) 
 Here is how much of TeX's memory you used:
- 19734 strings out of 474773
- 400902 string characters out of 5757730
- 1945842 words of memory out of 5000000
- 41541 multiletter control sequences out of 15000+600000
+ 19738 strings out of 474773
+ 400993 string characters out of 5757730
+ 1946842 words of memory out of 5000000
+ 41545 multiletter control sequences out of 15000+600000
  597433 words of font info for 152 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  93i,15n,97p,361b,636s stack positions out of 10000i,1000n,20000p,200000b,200000s
