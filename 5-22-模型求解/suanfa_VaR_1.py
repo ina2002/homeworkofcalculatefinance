@@ -145,4 +145,4 @@ if model.status == GRB.OPTIMAL or model.status == GRB.SUBOPTIMAL:
     print("✅ Gurobi 投资组合期望收益 =", total_profit)
     print("✅ Gurobi 计算的 VaR 上界 η =", eta_val)
 else:
-    print("❌ 求解失败，状态码：", model.status)
+    print("❌ 求解失败, 状态码：", model.status)

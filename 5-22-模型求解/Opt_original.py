@@ -71,5 +71,5 @@ selected = [(i, df.loc[i, 'A_i'], df.loc[i, 'grade'], df.loc[i, 'r_i'], df.loc[i
 result_df = pd.Input_dataFrame(selected, columns=["Index", "Loan_Amount", "Grade", "Interest_Rate", "Repayment_Prob"])
 result_df.to_csv("selected_investments_max_repayment.csv", index=False)
 
-print("✅ 最优期望回款组合已保存至 'selected_investments_max_repayment.csv'。")
+print("✅ 最优期望回款组合已保存至 'selected_investments_max_repayment.csv'. ")
 print(result_df)

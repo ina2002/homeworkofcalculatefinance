@@ -6,7 +6,7 @@ from gurobipy import GRB
 # === Step 1: 加载 Excel 数据 ===
 df = pd.read_excel("Input_data.xlsx")
 
-# === Step 2: 提取有效变量，清洗非法值 ===
+# === Step 2: 提取有效变量, 清洗非法值 ===
 df['A_i'] = df['loan_amnt']
 df['P_i'] = 1 - df['estimated_default_prob']
 df['r_i'] = df['int_rate'] / 100
