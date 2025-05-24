@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.5)  24 MAY 2025 13:50
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.5)  24 MAY 2025 21:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -783,9 +783,6 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{12.65999pt}.
 
 [2]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
 (fancyhdr)                Make it at least 12.65999pt, for example:
@@ -794,7 +791,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 [3]
 
 LaTeX Font Warning: Font shape `TU/ppl/b/n' undefined
-(Font)              using `TU/ppl/m/n' instead on input line 230.
+(Font)              using `TU/ppl/m/n' instead on input line 228.
 
 
 Package fontspec Info: Could not resolve font "FangSong/BI" (it probably
@@ -808,7 +805,7 @@ Package fontspec Info: Could not resolve font "FangSong/B" (it probably
 Package fontspec Info: Could not resolve font "FangSong/I" (it probably
 (fontspec)             doesn't exist).
 
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 230.
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 228.
 (d:/texlive/texlive/2024/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
@@ -824,7 +821,7 @@ Package fontspec Info: Font family 'FangSong(0)' created for font 'FangSong'
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <11> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 247.
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 245.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -843,15 +840,15 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 [5]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 296.
+(hyperref)                removing `math shift' on input line 294.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 296.
+(hyperref)                removing `subscript' on input line 294.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 296.
+(hyperref)                removing `math shift' on input line 294.
 
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
@@ -892,12 +889,12 @@ Package rerunfilecheck Info: File `Manuscript.out' has not changed.
 (rerunfilecheck)             Checksum: E32DB129D9B8E341EF94997515C0460D;994.
  ) 
 Here is how much of TeX's memory you used:
- 19679 strings out of 474773
- 398930 string characters out of 5757730
+ 19682 strings out of 474773
+ 399008 string characters out of 5757730
  1946842 words of memory out of 5000000
- 41497 multiletter control sequences out of 15000+600000
+ 41500 multiletter control sequences out of 15000+600000
  592368 words of font info for 145 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 93i,15n,97p,375b,636s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,15n,97p,400b,636s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on Manuscript.pdf (9 pages).

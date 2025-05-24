@@ -117,7 +117,7 @@
     \begin{tabular}{ll}
     \textbf{论文题目 }: & 计算金融与仿真 \\
     \textbf{学生姓名}: & 李晶晶 \quad 张璐 \quad 朱冯婧 \\
-    \textbf{指导老师}: & 邓志斌 
+    \textbf{指导老师}: & 邓智斌 
     \end{tabular}
     \end{table}
 
@@ -142,7 +142,7 @@ P2P（点对点）借贷是一种个人之间直接借贷的方式，通过在�
 
 为了实现贷款投资组合的多元化，投资者可依据自身的风险偏好从不同风险等级的贷款中进行选择。与传统金融机构贷款不同，P2P 贷款中的每位个人投资者其可用于投资的资金较为有限。因此，如何在资金约束下，基于借款人的风险特征评估潜在回报与风险，选择合适的贷款项目，并进行最优资金配置，是 P2P 投资者亟需解决的问题。
 
-大量学者针对 P2P 网络贷款的投资组合优化问题开展了深入研究。Wan 等人将贷款投资组合决策转化为一个在特定时点下实现收益最大化与风险最小化的优化问题，并引入混合治愈模型以提升投资效果，构建实例驱动的模型对投资者的组合决策进行优化~\cite{wan2023hybrid}. Guo 等人则提出一种基于实例的 P2P 投资组合决策模型，从风险最小角度出发，利用 LendingClub 和 Prosper 数据集实现投资组合配置优化~\cite{guo2016instance}. Ajay 等人则将该问题转化为多目标优化模型，在计算贷款相似度时将期望值框架与传统核方法结合，优化结果优于既有模型。
+大量学者针对 P2P 网络贷款的投资组合优化问题开展了深入研究。Wan 等人将贷款投资组合决策转化为一个在特定时点下实现收益最大化与风险最小化的优化问题，并引入混合治愈模型以提升投资效果，构建实例驱动的模型对投资者的组合决策进行优化~\cite{wan2023hybrid}. Guo 等人则提出一种基于实例的 P2P 投资组合决策模型，从风险最小角度出发，利用 LendingClub 和 Prosper 数据集实现投资组合配置优化~\cite{guo2016instance}. Ajay 等人则将该问题转化为多目标优化模型，在计算贷款相似度时将期望值框架与传统核方法结合，优化结果优于既有模型\cite{byanjankar2021data}.
 
 贷款投资组合优化（Loan Portfolio Optimization）与传统投资组合优化具有相似性，但更关注与贷款相关的特定风险，例如借款人信用评分、贷款金额、借款用途等因素引发的借款人风险、违约风险以及利率波动风险。优化目标是通过合理配置不同借款人贷款项目，在控制风险的同时实现收益最大化。
 
@@ -193,10 +193,9 @@ x_i \in \{0, 1\}, \quad i = 1, 2, \ldots, N
 \text{s.t.} \quad
 & \sum_{i=1}^N x_i A_i \le B \quad \text{(预算限制)} \\
 & \sum_{i \in G_k} x_i A_i \le \alpha_k B, \quad \forall k \quad \text{(信用等级比例约束)} \\
-& \sum_{i=1}^N x_i A_i P_i \le R_{\max} \quad \text{(期望风险控制)} \\
-& \sum_{i=1}^N x_i \le m \quad \text{(Top-$m$ 选择)} \\
 & \sum_{i=1}^N x_i A_i \cdot \tilde{P}_i^{(s)} - \eta \le \mathcal{M} z_s, \quad \forall s=1,\dots,S \quad \text{(VaR限制)} \\
 & \sum_{s=1}^S z_s \le (1 - \beta) S \\
+& \sum_{i=1}^N x_i \le m \quad \text{(Top-$m$ 选择)} \\
 & z_s \in \{0,1\}, \quad \eta \in \mathbb{R}
 \end{aligned}
 \label{eq:var_model}
@@ -207,10 +206,9 @@ x_i \in \{0, 1\}, \quad i = 1, 2, \ldots, N
 \text{s.t.} \quad
 & \sum_{i=1}^N x_i A_i \le B \quad \text{(预算限制)} \\
 & \sum_{i \in G_k} x_i A_i \le \alpha_k B, \quad \forall k \quad \text{(信用等级比例约束)} \\
-& \sum_{i=1}^N x_i A_i P_i \le R_{\max} \quad \text{(期望风险控制)} \\
-& \sum_{i=1}^N x_i \le m \quad \text{(Top-$m$ 选择)} \\
 & \xi_s \ge \sum_{i=1}^N x_i A_i \cdot \tilde{P}_i^{(s)} - \eta, \quad \forall s = 1,\dots,S \quad \text{(场景损失)} \\
 & \eta + \frac{1}{S(1 - \beta)} \sum_{s=1}^S \xi_s \le \text{CVaR}_{\max} \quad \text{(CVaR限制)} \\
+& \sum_{i=1}^N x_i \le m \quad \text{(Top-$m$ 选择)} \\
 & \xi_s \ge 0, \quad \eta \in \mathbb{R}
 \end{aligned}
 \label{eq:cvar_model}
@@ -368,5 +366,17 @@ VaR 模型进一步考虑极端情境下的最大可能损失，将分位数损�
 \newpage
 \bibliographystyle{unsrtnat} 
 \bibliography{ref}
+%小组分工
+\section*{小组分工}
+\begin{table}[htbp]
+\centering
+\begin{tabular}{ccc}
+\hline
+\textbf{姓名} & \textbf{学号} & \textbf{分工} \\ \hline
+李晶晶 & 202428016443014 & 论文撰写、模型设计 \\
+张璐 & 202428016446002 & 数据处理、模型求解 \\ 
+朱冯婧 & 202428016443008 & 论文撰写、算法设计 \\ \hline
+\end{tabular}
 
+\end{table}
 \end{document}
