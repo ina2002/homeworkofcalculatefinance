@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.5)  20 MAY 2025 15:28
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.5)  24 MAY 2025 13:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -311,9 +311,7 @@ File: zhnumber-utf8.cfg 2022/07/14 v3.0 Chinese numerals with UTF8 encoding
 File: ctex-scheme-chinese.def 2022/07/14 v2.5.10 Chinese scheme for generic (CTEX)
  (d:/texlive/texlive/2024/texmf-dist/tex/latex/ctex/config/ctex-name-utf8.cfg
 File: ctex-name-utf8.cfg 2022/07/14 v2.5.10 Caption with encoding UTF-8 (CTEX)
-)) (d:/texlive/texlive/2024/texmf-dist/tex/latex/ctex/ctex-c5size.clo
-File: ctex-c5size.clo 2022/07/14 v2.5.10 c5size option (CTEX)
-) (d:/texlive/texlive/2024/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-windows.def
+)) (d:/texlive/texlive/2024/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-windows.def
 File: ctex-fontset-windows.def 2022/07/14 v2.5.10 Windows fonts definition (CTEX)
 
 Package fontspec Info: Could not resolve font "KaiTi/B" (it probably doesn't
@@ -775,11 +773,17 @@ LaTeX Font Warning: Font shape `TU/ppl/m/n' undefined
 [1
 
 ]
-LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 144.
+LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 160.
  (d:/texlive/texlive/2024/texmf-dist/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
-Underfull \vbox (badness 3240) has occurred while \output is active []
+
+Package fancyhdr Warning: \footskip is too small (0.0pt): 
+(fancyhdr)                Make it at least 12.65999pt, for example:
+(fancyhdr)                \setlength{\footskip}{12.65999pt}.
+
+[2]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
@@ -787,10 +791,10 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                Make it at least 12.65999pt, for example:
 (fancyhdr)                \setlength{\footskip}{12.65999pt}.
 
-[2]
+[3]
 
 LaTeX Font Warning: Font shape `TU/ppl/b/n' undefined
-(Font)              using `TU/ppl/m/n' instead on input line 214.
+(Font)              using `TU/ppl/m/n' instead on input line 230.
 
 
 Package fontspec Info: Could not resolve font "FangSong/BI" (it probably
@@ -804,7 +808,7 @@ Package fontspec Info: Could not resolve font "FangSong/B" (it probably
 Package fontspec Info: Could not resolve font "FangSong/I" (it probably
 (fontspec)             doesn't exist).
 
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 214.
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 230.
 (d:/texlive/texlive/2024/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
@@ -820,7 +824,7 @@ Package fontspec Info: Font family 'FangSong(0)' created for font 'FangSong'
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <11> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 231.
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 247.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -830,31 +834,25 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                Make it at least 12.65999pt, for example:
 (fancyhdr)                \setlength{\footskip}{12.65999pt}.
 
-[3]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 12.65999pt, for example:
-(fancyhdr)                \setlength{\footskip}{12.65999pt}.
-
 [4]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 280.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 280.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 280.
-
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
 (fancyhdr)                Make it at least 12.65999pt, for example:
 (fancyhdr)                \setlength{\footskip}{12.65999pt}.
 
 [5]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 296.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 296.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 296.
+
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
 (fancyhdr)                Make it at least 12.65999pt, for example:
@@ -866,7 +864,13 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                Make it at least 12.65999pt, for example:
 (fancyhdr)                \setlength{\footskip}{12.65999pt}.
 
-[7] (./Manuscript.bbl)
+[7]
+
+Package fancyhdr Warning: \footskip is too small (0.0pt): 
+(fancyhdr)                Make it at least 12.65999pt, for example:
+(fancyhdr)                \setlength{\footskip}{12.65999pt}.
+
+[8] (./Manuscript.bbl)
 \openout3 = `Manuscript.ent'.
 
 
@@ -875,7 +879,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                Make it at least 12.65999pt, for example:
 (fancyhdr)                \setlength{\footskip}{12.65999pt}.
 
-[8] (./Manuscript.aux)
+[9] (./Manuscript.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/07/14>
@@ -884,25 +888,16 @@ L3 programming layer <2022/07/14>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `Manuscript.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Manuscript.out':
-(rerunfilecheck)             Before: 375D266E42374EAC29AF07D6DF524F0D;840
-(rerunfilecheck)             After:  E32DB129D9B8E341EF94997515C0460D;994.
+Package rerunfilecheck Info: File `Manuscript.out' has not changed.
+(rerunfilecheck)             Checksum: E32DB129D9B8E341EF94997515C0460D;994.
  ) 
 Here is how much of TeX's memory you used:
- 19738 strings out of 474773
- 400993 string characters out of 5757730
+ 19679 strings out of 474773
+ 398930 string characters out of 5757730
  1946842 words of memory out of 5000000
- 41545 multiletter control sequences out of 15000+600000
- 597433 words of font info for 152 fonts, out of 8000000 for 9000
+ 41497 multiletter control sequences out of 15000+600000
+ 592368 words of font info for 145 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 93i,15n,97p,361b,636s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,15n,97p,375b,636s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Manuscript.pdf (8 pages).
+Output written on Manuscript.pdf (9 pages).

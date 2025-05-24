@@ -1,101 +1,18 @@
-\begin{thebibliography}{15}
+\begin{thebibliography}{2}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[彭桥 et~al.(2025)彭桥, 肖尧, 杨宇茜, and 杨沛瑾]{彭桥2024中国新质生产力发展水平测度、动态演化与驱动因素研究}
-彭桥, 肖尧, 杨宇茜, and 杨沛瑾.
-\newblock 中国新质生产力发展水平测度、动态演化与驱动因素研究.
-\newblock \emph{软科学}, 39\penalty0 (04):\penalty0 25--34, 2025.
-\newblock ISSN 1001-8409.
-\newblock \doi{10.13956/j.ss.1001-8409.2025.04.05}.
-\newblock URL \url{https://link.cnki.net/urlid/51.1268.g3.20241125.1056.010}.
+\bibitem[万洁 and 郝俊(2023)]{wan2023hybrid}
+万洁 and 郝俊.
+\newblock 基于混合治愈模型的网络借贷投资组合决策模型与实证研究.
+\newblock \emph{系统科学与数学}, 43\penalty0 (5):\penalty0 1138--1156, 2023.
 
-\bibitem[王珏 and 王荣基(2024)]{王珏2024新质生产力：指标构建与时空演进}
-王珏 and 王荣基.
-\newblock 新质生产力：指标构建与时空演进.
-\newblock \emph{西安财经大学学报}, 37\penalty0 (1):\penalty0 31--47, 2024.
-\newblock \doi{10.19331/j.cnki.jxufe.20231124.001}.
-
-\bibitem[李光勤 and 李梦娇(2024)]{李光勤2024中国省域新质生产力水平评价、空间格局及其演化特征}
-李光勤 and 李梦娇.
-\newblock 中国省域新质生产力水平评价、空间格局及其演化特征.
-\newblock \emph{经济地理}, 44\penalty0 (8):\penalty0 116--125, 2024.
-\newblock \doi{10.15957/j.cnki.jjdl.2024.08.014}.
-
-\bibitem[曹东勃 and 蔡煜(2024)]{曹东勃2024新质生产力指标体系构建研究}
-曹东勃 and 蔡煜.
-\newblock 新质生产力指标体系构建研究.
-\newblock \emph{上海财经大学学报}, \penalty0 (4):\penalty0 50--62, 2024.
-
-\bibitem[张海 et~al.(2024)张海, 王震, and 李秉远]{张海2024新质生产力发展水平、空间差异及动态演进}
-张海, 王震, and 李秉远.
-\newblock 新质生产力发展水平、空间差异及动态演进.
-\newblock \emph{统计与决策}, \penalty0 (24):\penalty0 11--26, 2024.
-\newblock \doi{10.13546/j.cnki.tjyjc.2024.24.002}.
-
-\bibitem[胡佳霖 and 徐俊(2024)]{胡佳霖2024中国新质生产力：区域差距、动态演进与跃迁趋势}
-胡佳霖 and 徐俊.
-\newblock 中国新质生产力：区域差距、动态演进与跃迁趋势.
-\newblock \emph{统计与决策}, \penalty0 (21):\penalty0 5--16, 2024.
-\newblock \doi{10.13546/j.cnki.tjyjc.2024.21.001}.
-
-\bibitem[简新华 and 聂长飞(2024)]{简新华2024中国新质生产力水平测度及省际现状的比较分析}
-简新华 and 聂长飞.
-\newblock 中国新质生产力水平测度及省际现状的比较分析.
-\newblock \emph{经济问题探索}, \penalty0 (10):\penalty0 3--20, 2024.
-
-\bibitem[冉戎 et~al.(2024)冉戎, 花磊, 陈烨靖, and 夏艺嘉]{冉戎2024新质生产力发展潜力测度、时空差异及战略着力点研究}
-冉戎, 花磊, 陈烨靖, and 夏艺嘉.
-\newblock 新质生产力发展潜力测度、时空差异及战略着力点研究.
-\newblock \emph{重庆大学学报(社会科学版)}, 2024.
-\newblock \doi{10.11835/j.issn.1008-5831.jg.2024.10.002}.
-\newblock URL \url{https://link.cnki.net/urlid/50.1023.C.20241030.1300.006}.
-\newblock 网络首发.
-
-\bibitem[颜克高 et~al.(2025)颜克高, 王馨悦, and 吴心怡]{颜克高2025中国新质生产力发展的水平测度与区域差异研究}
-颜克高, 王馨悦, and 吴心怡.
-\newblock 中国新质生产力发展的水平测度与区域差异研究.
-\newblock \emph{湖南大学学报(社会科学版)}, 39\penalty0 (1):\penalty0 10--21, 2025.
-\newblock \doi{10.16339/j.cnki.hdxbskb.2025.01.002}.
-
-\bibitem[徐波 et~al.(2024)徐波, 王兆萍, 余乐山, and 刘柯]{徐波2024新质生产力对资源配置效率的影响效应研究}
-徐波, 王兆萍, 余乐山, and 刘柯.
-\newblock 新质生产力对资源配置效率的影响效应研究.
-\newblock \emph{产业经济评论}, \penalty0 (4):\penalty0 35--49, 2024.
-\newblock \doi{10.19313/j.cnki.cn10-1223/f.20240417.001}.
-
-\bibitem[杨智晨 et~al.(2025)杨智晨, 涂先青, and 王方方]{杨智晨2025我国新质生产力发展的理论基础、时空特征及分异机理}
-杨智晨, 涂先青, and 王方方.
-\newblock 我国新质生产力发展的理论基础、时空特征及分异机理.
-\newblock \emph{经济问题探索}, \penalty0 (1):\penalty0 50--66, 2025.
-
-\bibitem[马大晋 et~al.(2025)马大晋, 吴旭辉, and 张博文]{马大晋2025中国新质生产力发展水平区域评价与空间关联网络特征}
-马大晋, 吴旭辉, and 张博文.
-\newblock 中国新质生产力发展水平区域评价与空间关联网络特征.
-\newblock \emph{财经论丛}, pages 1--14, 2025.
-\newblock \doi{10.13762/j.cnki.cjlc.20250103.001}.
-\newblock URL \url{https://doi.org/10.13762/j.cnki.cjlc.20250103.001}.
-
-\bibitem[程赛楠 and 冯珍(2024)]{程赛楠2024数实融合对新质生产力的影响研究}
-程赛楠 and 冯珍.
-\newblock 数实融合对新质生产力的影响研究.
-\newblock \emph{北京理工大学学报(社会科学版)}, 26\penalty0 (6):\penalty0 15--27, 2024.
-\newblock \doi{10.15918/j.jbitss1009-3370.2024.1491}.
-
-\bibitem[张龙 et~al.(2024)张龙, 申瑛琦, and 张伟琦]{张龙2024新质生产力的原创价值、统计测度与培育方向}
-张龙, 申瑛琦, and 张伟琦.
-\newblock 新质生产力的原创价值、统计测度与培育方向.
-\newblock \emph{暨南学报(哲学社会科学版)}, \penalty0 (11):\penalty0 126--144, 2024.
-\newblock \doi{10.11778/j.jnxb.20240975}.
-
-\bibitem[Ataei et~al.(2020)Ataei, Mahmoudi, Feylizadeh, and Li]{ataeiOrdinalPriorityApproach2020}
-Younes Ataei, Amin Mahmoudi, Mohammad~Reza Feylizadeh, and Deng-Feng Li.
-\newblock Ordinal {{Priority Approach}} ({{OPA}}) in {{Multiple Attribute Decision-Making}}.
-\newblock \emph{APPLIED SOFT COMPUTING}, 86, January 2020.
-\newblock ISSN 1568-4946.
-\newblock \doi{10.1016/j.asoc.2019.105893}.
+\bibitem[Guo et~al.(2016)Guo, Zhou, Luo, and et~al.]{guo2016instance}
+Yiyang Guo, Wei Zhou, Chen Luo, and et~al.
+\newblock Instance-based credit risk assessment for investment decisions in p2p lending.
+\newblock \emph{European Journal of Operational Research}, 249\penalty0 (2):\penalty0 417--426, 2016.
 
 \end{thebibliography}
