@@ -1,4 +1,4 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{4}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -19,5 +19,10 @@ Yiyang Guo, Wei Zhou, Chen Luo, and et~al.
 A~Byanjankar, J~Mezei, and M~Heikkila.
 \newblock Data-driven optimization of peer-to-peer lending portfolios based on the expected value framework.
 \newblock \emph{Intelligent Systems in Accounting, Finance and Management}, 28\penalty0 (2):\penalty0 119--129, 2021.
+
+\bibitem[Kennedy and Eberhart(1995)]{kennedy1995particle}
+James Kennedy and Russell Eberhart.
+\newblock Particle swarm optimization.
+\newblock In \emph{Proceedings of ICNN'95 - International Conference on Neural Networks}, volume~4, pages 1942--1948. IEEE, 1995.
 
 \end{thebibliography}
