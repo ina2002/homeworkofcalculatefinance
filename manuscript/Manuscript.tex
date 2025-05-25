@@ -11,7 +11,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[linesnumbered, ruled, vlined]{algorithm2e}
 \usepackage{amsmath}
-%链接点击跳转
+
+
 \usepackage[hidelinks]{hyperref}
 \hypersetup{
   colorlinks=true,
@@ -85,6 +86,24 @@
 \newcommand{\JJ}[1]{{\color{black}#1}}
 \newcommand{\eat}[1]{}
 \usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}  % 可选：定义颜色
+
+\lstset{
+  language=Python,             % 设置语言
+  basicstyle=\ttfamily\tiny, % 基本字体风格
+  numbers=left,               % 行号位置，可选 right 或 none
+  numberstyle=\tiny,          % 行号字体
+  keywordstyle=\color{blue},  % 关键字颜色
+  commentstyle=\color{gray},  % 注释颜色
+  stringstyle=\color{orange}, % 字符串颜色
+  backgroundcolor=\color{white}, % 背景色
+  frame=single,               % 添加边框，可选 shadowbox/double
+  breaklines=true,            % 自动换行
+  captionpos=b,               % 标题位置，b 或 t
+  tabsize=4,                  % tab 宽度
+  showstringspaces=false,     % 不显示字符串中的空格
+}
 
 \usepackage{endnotes}
 \let\footnote=\endnote
@@ -136,7 +155,7 @@
 \section{投资组合选择介绍}
 
 
-P2P借贷(peer-t-peer lending lending)是一种个人之间直接借贷的方式, 通过在线平台进行, 无需传统银行中介. 这种创新的融资方式提供了一个市场, 借款人可以向多个贷方申请贷款, 贷方可以选择为这些贷款提供全部或部分资金. 这一模式利用技术手段简化了借贷过程, 通常为借款人带来更低的利率, 同时为投资者提供更高的回报. 
+P2P借贷(peer-to-peer lending lending)是一种个人之间直接借贷的方式, 通过在线平台进行, 无需传统银行中介. 这种创新的融资方式提供了一个市场, 借款人可以向多个贷方申请贷款, 贷方可以选择为这些贷款提供全部或部分资金. 这一模式利用技术手段简化了借贷过程, 通常为借款人带来更低的利率, 同时为投资者提供更高的回报. 
 
 目前, 全球几大平台主导着 P2P 借贷领域, 主要包括 LendingClub, Prosper 和 Funding Circle 等. 这类平台通过评估贷款项目和借款人的 FICO 分数, 贷款金额和期限, 借款人的资产, 债务状况, 就业类型等数据, 为每笔贷款提供风险评级. 其中, LendingClub 是美国最大的 P2P 借贷平台之一, 提供个人贷款和投资机会. 本文使用来自 LendingClub 的公共数据集（涵盖 2007--2018 年的贷款记录）, 将贷款属性转化为违约概率作为后续建模依据. 
 
@@ -176,42 +195,45 @@ x_i \in \{0, 1\}, \quad i = 1, 2, \ldots, N
 \subsection*{模型形式}
 \begin{equation}
 \begin{aligned}
-\max_{x_i \in \{0,1\}} \quad & \sum_{i=1}^N x_i A_i \left[ r_i(1 - P_i) - P_i \right] \\
+\max_{x_i \in \{0,1\}} \quad & \sum_{i=1}^N x_i A_i  r_i(1 - P_i)  \\
 \text{s.t.} \quad
-& \sum_{i=1}^N x_i A_i \le B \quad \text{(预算限制)} \\
-& \sum_{i \in G_k} x_i A_i \le \alpha_k B, \quad \forall k \quad \text{(信用等级比例约束)} \\
+& \sum_{i=1}^N x_i A_i \le B , \\
+& \sum_{i \in G_k} x_i A_i \le \alpha_k B, \quad \forall k , \\
 & \sum_{i=1}^N x_i A_i P_i \le R_{\max} \quad \text{(风险控制)} \\
-& \sum_{i=1}^N x_i \le m \quad \text{(Top-$m$ 选择)}
+& \sum_{i=1}^N x_i \le m ,
 \end{aligned}
 \label{eq:main_model} 
+\tag{P2P}
 \end{equation}
 
 
 \begin{equation}
 \begin{aligned}
-\max_{x_i \in \{0,1\}} \quad & \sum_{i=1}^N x_i A_i \left[ r_i(1 - P_i) - P_i \right] \\
+\max_{x_i \in \{0,1\}} \quad & \sum_{i=1}^N x_i A_i  r_i(1 - P_i)  \\
 \text{s.t.} \quad
-& \sum_{i=1}^N x_i A_i \le B \quad \text{(预算限制)} \\
-& \sum_{i \in G_k} x_i A_i \le \alpha_k B, \quad \forall k \quad \text{(信用等级比例约束)} \\
-& \sum_{i=1}^N x_i A_i \cdot \tilde{P}_i^{(s)} - \eta \le \mathcal{M} z_s, \quad \forall s=1,\dots,S \quad \text{(VaR限制)} \\
+& \sum_{i=1}^N x_i A_i \le B , \\
+& \sum_{i \in G_k} x_i A_i \le \alpha_k B, \quad \forall k , \\
+& \sum_{i=1}^N x_i A_i \cdot \tilde{P}_i^{(s)} - \eta \le \mathcal{M} z_s, \quad \forall s=1,\dots,S ,\\
 & \sum_{s=1}^S z_s \le (1 - \beta) S \\
-& \sum_{i=1}^N x_i \le m \quad \text{(Top-$m$ 选择)} \\
+& \sum_{i=1}^N x_i \le m , \\
 & z_s \in \{0,1\}, \quad \eta \in \mathbb{R}
 \end{aligned}
 \label{eq:var_model}
+\tag{P2P-VaR}
 \end{equation}
 \begin{equation}
 \begin{aligned}
-\max_{x_i \in \{0,1\}} \quad & \sum_{i=1}^N x_i A_i \left[ r_i(1 - P_i) - P_i \right] \\
+\max_{x_i \in \{0,1\}} \quad & \sum_{i=1}^N x_i A_i r_i(1 - P_i)  \\
 \text{s.t.} \quad
-& \sum_{i=1}^N x_i A_i \le B \quad \text{(预算限制)} \\
-& \sum_{i \in G_k} x_i A_i \le \alpha_k B, \quad \forall k \quad \text{(信用等级比例约束)} \\
-& \xi_s \ge \sum_{i=1}^N x_i A_i \cdot \tilde{P}_i^{(s)} - \eta, \quad \forall s = 1,\dots,S \quad \text{(场景损失)} \\
-& \eta + \frac{1}{S(1 - \beta)} \sum_{s=1}^S \xi_s \le \text{CVaR}_{\max} \quad \text{(CVaR限制)} \\
-& \sum_{i=1}^N x_i \le m \quad \text{(Top-$m$ 选择)} \\
+& \sum_{i=1}^N x_i A_i \le B , \\
+& \sum_{i \in G_k} x_i A_i \le \alpha_k B, \quad \forall k , \\
+& \xi_s \ge \sum_{i=1}^N x_i A_i \cdot \tilde{P}_i^{(s)} - \eta, \quad \forall s = 1,\dots,S , \\
+& \eta + \frac{1}{S(1 - \beta)} \sum_{s=1}^S \xi_s \le \text{CVaR}_{\max}, \\
+& \sum_{i=1}^N x_i \le m , \\
 & \xi_s \ge 0, \quad \eta \in \mathbb{R}
 \end{aligned}
 \label{eq:cvar_model}
+\tag{P2P-CVaR}
 \end{equation}
 
 \section{算法设计}
@@ -334,39 +356,223 @@ $total\_budget \gets 0$, $total\_selected \gets 0$, $x_{\text{current}} \gets \m
 在本节中, 我们分别构建并求解三类贷款筛选优化模型：原始模型, VaR（Value at Risk）模型和 CVaR（Conditional Value at Risk）模型. 三者均以最大化投资收益为目标, 并在此基础上逐步引入风险控制手段, 以模拟实际投资场景中对风险的不同管控需求. 
 
 \vspace{1em}
-\paragraph{原始模型（期望损失约束）}
-原始模型以最大化期望净收益为目标, 同时设置多个线性约束, 确保预算控制, 信用等级平衡与风险控制等现实要求. 
-该模型为典型的 0-1 整数规划问题, 可使用 Gurobi 等商业求解器在中小规模下获得最优解. 
+\paragraph{原始模型（期望损失约束）}。
 
-\vspace{1em}
-\paragraph{VaR 模型（引入分位损失约束）}
+\begin{algorithm}[htbp]
+\caption{最大化期望回款的投资组合优化}
+\label{alg:max_profit}
+\SetAlgoNlRelativeSize{0}
+\KwIn{贷款数据集：每条数据包含 $A_i$（金额）、$r_i$（利率）、$P_i$（还款概率）、信用等级}
+\KwOut{最优贷款子集 $x_i \in \{0,1\}$ 及其组合统计}
 
-VaR 模型进一步考虑极端情境下的最大可能损失, 将分位数损失 $\text{VaR}_\beta$ 作为新的风险控制手段. 通过构造 Monte Carlo 风险场景, 我们对贷款可能发生的违约路径进行模拟, 并引入辅助变量 $z_s \in \{0,1\}$ 表示某个场景是否超过 VaR 阈值 $\eta$. 
+\BlankLine
+\textbf{数据预处理：} 计算 $A_i = \texttt{loan\_amnt}_i$, $r_i = \texttt{int\_rate}_i / 100$, $P_i = \texttt{default\_prob}_i$\;
+清洗缺失值与无效值；按等级分组为 $G_k$\;
 
-由于 VaR 对应的非凸约束结构和0-1变量使得模型求解复杂度较高, 通常只适用于中小规模问题, 且求解结果可能存在不连续性. 
+\BlankLine
+\textbf{模型构建：}\;
+定义决策变量 $x_i \in \{0,1\}$，表示是否选择贷款 $i$\;
+设定目标函数：最大化 $\sum x_i A_i r_i(1 - P_i) $\;
+添加约束：
+\begin{itemize}
+  \item $\sum x_i A_i \le B$ \hfill \tcp*[f]{预算约束}
+  \item $\sum_{i \in G_k} x_i A_i \le \alpha_k B$ \hfill \tcp*[f]{信用等级比例约束}
+  \item $\sum x_i A_i P_i \le R_{\max}$ \hfill \tcp*[f]{风险约束}
+  \item $\sum x_i \le m$ \hfill \tcp*[f]{Top-m 限制}
+\end{itemize}
 
-\vspace{1em}
-\paragraph{CVaR 模型（引入条件期望损失约束）}
+\BlankLine
+调用 Gurobi 优化器求解模型\;
+\If{模型可解}{
+    输出最优贷款组合 $x_i = 1$ 的子集\;
+    统计并保存结果至 CSV 文件\;
+}
+\Else{
+    输出模型求解失败与错误类型（不可行/无界）\;
+}
 
-为克服 VaR 模型不可微, 不可凸等缺点, CVaR 模型通过引入辅助变量 $\xi_s \ge 0$ 和 VaR 估计值 $\eta$, 以线性结构实现对尾部风险的精确控制. 其约束具有良好的可解性与可扩展性, 广泛应用于实际金融优化问题中. 
+\end{algorithm}
 
-该模型可转化为混合整数线性规划（MILP）形式, 使用 Gurobi 等求解器可以在合理时间内获得精确解, 特别适合场景规模较大的优化问题. 
 
-\vspace{1em}
-\paragraph{求解策略}
+为求解最大化期望回款的贷款投资组合问题，本文设计了如算法 \ref{alg:max_profit} 所示的混合整数规划模型。在贷款数据集中，每条记录包含金额 $A_i$、年利率 $r_i$、还款概率 $P_i$ 以及信用等级信息。目标是在预算、风险和信用等级约束下，从中筛选出若干笔贷款以最大化组合的期望净收益。
 
-在三类模型中, 原始模型为最简形式, 适用于风险可控或追求高收益的情境；VaR 模型在表达风险容忍边界方面具有直观优势；而 CVaR 模型则提供了更稳健的风险控制能力和更优的优化特性. 
+{模型特点如下：}
+目标函数最大化 $\sum x_i A_i r_i (1 - P_i)$，即各笔贷款在预期条件下的净收益；
 
-考虑到实际求解效率与解的稳定性, 本研究在实现中主要采用 CVaR 模型进行主模型求解, 并通过 Gurobi 求解器实现精确建模与最优解求取. 对于大规模场景（如 $S > 1000$）, 可结合启发式算法进行初解生成与变量预选, 从而提升整体求解效率. 
+约束条件包括总预算限制、信用等级分布比例控制、风险容忍上限（以期望损失衡量），以及最多投资 $m$ 笔贷款的限制；
 
+决策变量 $x_i \in {0,1}$ 表示是否选中贷款 $i$。
+
+在设置参数方面，本文采用如下配置：
+
+\begin{table}[htbp]
+\centering
+\caption{优化模型参数设置}
+\begin{tabular}{ll}
+\toprule
+参数 & 数值说明 \\
+\midrule
+总预算 $B$ & \$100,000,000 \\
+最大风险容忍度 $R_{\max}$ & \$10,000,000 \\
+最大投资笔数 $m$ & 5000 \\
+信用等级比例上限 $\alpha_k$ &
+\begin{tabular}[t]{@{}l@{}}
+A: 40\%, B: 30\%, C: 20\%,\
+D: 10\%, E: 5\%, F: 2\%, G: 1\%
+\end{tabular} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+求解结果概述：
+Gurobi Optimizer 在约 1.3 秒内成功收敛到全局最优解。最终选中的贷款子集包含 3293 笔贷款，总投资金额为 \$58,676,750，未触及预算上限，表明优化模型具备有效控制风险和冗余空间的能力。组合的期望净收益为 \$3,538,325.75。
+
+按信用等级统计结果：
+
+\begin{table}[htbp]
+\centering
+\caption{最优组合中各等级贷款统计}
+\begin{tabular}{lccc}
+\toprule
+信用等级 & 贷款数量（笔） & 金额合计（美元） & 平均违约概率 \\
+\midrule
+A & 2180 & 40,000,000 & 12.65\% \\
+B & 1113 & 18,676,750 & 26.52\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+结果显示，等级为 A 的贷款在数量和金额上占据主导地位，表明模型倾向于优先选择高评级、低风险贷款；等级 B 的贷款次之，作为补充以提高收益。在严格的风险与比例控制下，模型实现了回报与稳健的双重目标，具有良好的现实应用价值。
+\begin{algorithm}[htbp]
+\caption{基于VaR约束的贷款组合优化（PSO + Gurobi）}
+\KwIn{贷款数据 $(A_i, r_i, P_i)$，预算 $B$，个数上限 $m$，VaR置信水平 $\beta$}
+\KwOut{最大期望收益的贷款子集 $x_i \in \{0,1\}$}
+
+\textbf{1. 数据处理与场景生成：} \\
+计算 $profit_i = A_i \cdot r_i \cdot (1 - P_i)$；\\
+生成 $S$ 个场景损失 $L_{i,s} \sim \text{Bernoulli}(P_i) \cdot A_i$；
+
+\textbf{2. 粒子群初始化：} \\
+启发式生成初始粒子，设置速度与参数；
+
+\textbf{3. PSO 迭代：} \\
+\For{$t = 1$ \KwTo $T$}{
+  计算每个粒子的 VaR 值 $\eta$；\\
+  若 $\eta$ 超过上限或约束不满足，则适应度为 $-\infty$；\\
+  否则计算期望收益作为适应度；\\
+  更新个体/全局最优，调整速度与位置；
+}
+
+\textbf{4. Gurobi 精解（Warm-start）：} \\
+构建模型：\\
+最大化 $\sum x_i profit_i$，约束包括：\\
+\quad 预算 $\sum x_i A_i \le B$；个数 $\sum x_i \le m$；\\
+\quad VaR 置信限制 $\sum_s z_s \le (1 - \beta) S$；\\
+\quad 损失 $> \eta$ 的标记变量 $z_s$；\\
+使用 PSO 解 warm-start，求解最优组合；
+\end{algorithm}
+
+\begin{table}[htbp]
+\centering
+\caption{VaR 模型主要参数设置}
+\begin{tabular}{clc}
+\toprule
+符号 & 参数含义 & 数值/设置 \\
+\midrule
+$B$ & 投资总预算 & $1 \times 10^8$ 元 \\
+$m$ & 最多选择的贷款数量 & 5000 \\
+$S$ & 蒙特卡洛场景数 & 1000 \\
+$\beta$ & VaR置信水平 & 0.95 \\
+$\eta$ & VaR 上界 & 动态计算 \\
+$pop\_size$ & 粒子群种群规模 & 30 \\
+$max\_iter$ & PSO 最大迭代次数 & 100 \\
+$w, c_1, c_2$ & PSO 参数（惯性+学习因子） & $w=0.7,\ c_1=1.5,\ c_2=1.5$ \\
+\bottomrule
+\end{tabular}
+\label{tab:var-params}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{基于VaR约束的优化结果对比}
+\begin{tabular}{lccc}
+\toprule
+方法 & 选中贷款数 & 投资组合期望收益（元） & VaR 上界 $\eta$（元） \\
+\midrule
+PSO 粒子群算法 & 5000 & 7,016,573.73 & 36,698,075.00 \\
+Gurobi 精确求解 & 5000 & 8,389,092.16 & 47,556,800.00 \\
+\bottomrule
+\end{tabular}
+\label{tab:var-results}
+\end{table}
+
+为验证模型有效性，本文基于VaR（Value at Risk）约束构建贷款投资组合优化模型，结合粒子群算法（PSO）与混合整数规划（Gurobi）进行双阶段求解。结果如表~\ref{tab:var-results} 所示，PSO 能在较短时间内提供满足约束的可行解，其投资组合期望收益为约 701.66 万元，对应 VaR 上界为 3669.81 万元，满足置信水平为 95\% 的风险容忍范围。进一步使用 Gurobi 以 PSO 解为 warm-start 进行精确优化后，期望收益提升至 838.91 万元，VaR 上界略升至 4755.68 万元。两种方法结果一致性良好，验证了所构建模型在兼顾收益与风险控制方面的有效性与实用性。
+
+\begin{algorithm}[htbp]
+\caption{基于CVaR约束的贷款组合优化（PSO + Gurobi）}
+\KwIn{贷款数据 $(A_i, r_i, P_i)$，预算 $B$，个数上限 $m$，置信水平 $\beta$，CVaR上限 $R_{\max}$}
+\KwOut{最大期望收益的贷款子集 $x_i \in \{0,1\}$}
+
+\textbf{1. 数据处理与场景生成：} \\
+计算 $profit_i = A_i \cdot r_i \cdot (1 - P_i)$；\\
+生成 $S$ 个损失场景 $L_{i,s}$；
+
+\textbf{2. 粒子群初始化与适应度：} \\
+启发式初始化粒子 $x$；\\
+适应度为 $\sum x_i profit_i$ 加上风险利用率奖励；\\
+其中 $\text{CVaR} = \eta + \frac{1}{S(1-\beta)} \sum_s \max(l_s - \eta, 0)$；
+
+\textbf{3. PSO优化迭代：} \\
+更新粒子位置与速度，保存最优组合；
+
+\textbf{4. Gurobi 精解：} \\
+构建模型：\\
+最大化 $\sum x_i profit_i + \lambda \cdot \eta / R_{\max}$；\\
+约束包括：预算、个数、CVaR构造与CVaR上限限制；\\
+使用 PSO 解 warm-start，求解精确解；
+\end{algorithm}
+
+\begin{table}[htbp]
+\centering
+\caption{模型参数设置}
+\begin{tabular}{ll}
+\toprule
+\textbf{参数} & \textbf{取值说明} \\
+\midrule
+$B$ & 总预算限制，$1\times10^8$ 元 \\
+$m$ & 投资项目上限，5000 个 \\
+$\beta$ & CVaR 置信水平，0.95 \\
+$R_{\max}$ & 风险容忍值上限，$1.5\times10^7$ 元 \\
+$S$ & 蒙特卡洛场景数量，1000 \\
+$\text{pop\_size}$ & 粒子群规模，30 \\
+$\text{max\_iter}$ & 粒子群最大迭代次数，100 \\
+$(w, c_1, c_2)$ & PSO 参数：$w=0.7$, $c_1=c_2=1.5$ \\
+\bottomrule
+\end{tabular}
+\label{tab:params}
+\end{table}
+\begin{table}[htbp]
+\centering
+\caption{PSO 与 Gurobi 优化结果比较}
+\begin{tabular}{lcc}
+\toprule
+\textbf{指标} & \textbf{PSO 解} & \textbf{Gurobi 解} \\
+\midrule
+期望回款（元） & ¥7,016,573.73 & ¥5,753,233.48 \\
+CVaR 风险值（元） & ¥39,172,172.50 & ¥14,997,698.50 \\
+是否满足 CVaR 约束 & 否 & 是 \\
+选中项目数量 & 若干（$\leq 5000$） & 若干（$\leq 5000$） \\
+\bottomrule
+\end{tabular}
+\label{tab:results}
+\end{table}
+在本模型中，我们采用蒙特卡洛模拟构造投资损失的随机场景，基于条件风险价值（CVaR）准则对投资组合进行优化，目标为在限定风险水平下最大化期望收益。首先利用粒子群优化算法（PSO）快速获取近似可行解，随后通过 Gurobi 求解器进行精确优化。参数设置如表~\ref{tab:params} 所示。
+
+结果表明（见表~\ref{tab:results}），PSO 能在较短时间内获得收益较高的组合，但其解未能严格满足 CVaR 风险约束；而 Gurobi 求解得到的解在收益上略低，但能严格控制组合风险，满足预设风险容忍上限。两者结合可有效提升模型的求解效率与解的可行性，为后续实际投资提供策略参考
 \subsection{结果分析}
 \label{subsec:result_analysis}
 
 \section{结论}
-\newpage
-\bibliographystyle{unsrtnat} 
-\bibliography{ref}
-%小组分工
 \section*{小组分工}
 \begin{table}[htbp]
 \centering
@@ -377,6 +583,194 @@ VaR 模型进一步考虑极端情境下的最大可能损失, 将分位数损�
 张璐 & 202428016446002 & 数据处理, 模型求解 \\ 
 朱冯婧 & 202428016443008 & 论文撰写, 算法设计 \\ \hline
 \end{tabular}
-
 \end{table}
+\newpage
+\bibliographystyle{unsrtnat} 
+\bibliography{ref}
+%小组分工
+
+
+\section{附录}
+
+\subsection{VaR模型求解结果}
+\begin{lstlisting}[language=python]
+  PS E:\github\homeworkofcalculatefinance> python -u "e:\github\homeworkofcalculatefinance\5-25-模型求解\pso_gurobi_VaR.py"
+⚙️ 正在运行 PSO 寻优...
+
+--- 粒子群优化（PSO）结果 ---
+✅ 选中借款人数 = 5000
+✅ PSO 投资组合期望收益 = 7016573.73
+✅ PSO 使用的 VaR 上界 η = 36698075.00
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (win64 - Windows 11+.0 (26100.2))
+
+CPU model: Intel(R) Core(TM) Ultra 9 185H, instruction set [SSE2|AVX|AVX2]
+Thread count: 16 physical cores, 22 logical processors, using up to 22 threads
+
+Optimize a model with 1003 rows, 30370 columns and 10302786 nonzeros
+Model fingerprint: 0xa4fbee09
+Variable types: 1 continuous, 30369 integer (30369 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+08]
+  Objective range  [1e+00, 3e+03]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [5e+01, 1e+08]
+Warning: Model contains large matrix coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+
+User MIP start produced solution with objective 7.01657e+06 (2.25s)
+Loaded user MIP start with objective 7.01657e+06
+Processed MIP start in 2.23 seconds (0.95 work units)
+
+Presolve removed 1001 rows and 1001 columns
+Presolve time: 1.88s
+Presolved: 2 rows, 29369 columns, 58738 nonzeros
+Variable types: 0 continuous, 29369 integer (29369 binary)
+Found heuristic solution: objective 7283784.2164
+
+Starting sifting (using dual simplex for sub-problems)...
+
+    Iter     Pivots    Primal Obj      Dual Obj        Time
+       0          0     infinity     -8.5954234e+06      4s
+       1          1  -1.0939240e+05  -8.5461998e+06      4s
+       2          3  -1.3438183e+05  -8.5297172e+06      4s
+       3          5  -1.8822504e+05  -8.5227263e+06      4s
+       4          7  -2.1502998e+05  -8.5162448e+06      4s
+       5          9  -2.6694422e+05  -8.5105148e+06      4s
+       6         11  -3.1011424e+05  -8.5063219e+06      4s
+       7         13  -3.4598473e+05  -8.5027436e+06      4s
+       8         15  -3.7983946e+05  -8.4994864e+06      4s
+       9         17  -4.1301854e+05  -8.4971532e+06      4s
+      10         19  -4.4834645e+05  -8.4944963e+06      4s
+      11         21  -4.8769815e+05  -8.4924081e+06      4s
+      12         23  -5.2353089e+05  -8.4903439e+06      4s
+      13         25  -5.6559651e+05  -8.4875771e+06      4s
+      14         27  -6.2374219e+05  -8.4851169e+06      4s
+      15         29  -6.9229155e+05  -8.4833902e+06      4s
+      16         31  -7.4067974e+05  -8.4817202e+06      4s
+      17         33  -7.9618193e+05  -8.4802313e+06      4s
+      18         35  -8.3944338e+05  -8.4781641e+06      4s
+      19         37  -9.0488706e+05  -8.4757665e+06      4s
+      20         39  -9.6948627e+05  -8.4735416e+06      4s
+      21         41  -1.0366669e+06  -8.4713711e+06      4s
+      22         43  -1.1075983e+06  -8.4689240e+06      4s
+      23         45  -1.1876166e+06  -8.4668946e+06      4s
+      24         47  -1.2650869e+06  -8.4644744e+06      4s
+      25         49  -1.3537151e+06  -8.4623352e+06      4s
+      26         51  -1.4380471e+06  -8.4602487e+06      4s
+      27         53  -1.5182690e+06  -8.4583143e+06      4s
+      28         55  -1.6024285e+06  -8.4563366e+06      4s
+      29         57  -1.6864300e+06  -8.4543667e+06      4s
+      30         59  -1.7730984e+06  -8.4524107e+06      4s
+      31         61  -1.8757160e+06  -8.4505185e+06      4s
+      32         63  -1.9832589e+06  -8.4489934e+06      4s
+      33         65  -2.0609758e+06  -8.4470407e+06      4s
+      34         67  -2.1849239e+06  -8.4453954e+06      4s
+      35         69  -2.2734543e+06  -8.4435278e+06      4s
+      36         71  -2.3904212e+06  -8.4417966e+06      4s
+      37         73  -2.5010673e+06  -8.4402299e+06      4s
+      38         75  -2.6152965e+06  -8.4387511e+06      4s
+      39         77  -2.7081939e+06  -8.4372583e+06      4s
+      40         79  -2.8321013e+06  -8.4356705e+06      4s
+      41         81  -2.9482273e+06  -8.4340800e+06      4s
+      42         83  -3.0612090e+06  -8.4325333e+06      4s
+      43         85  -3.1986347e+06  -8.4310381e+06      4s
+      44         87  -3.3213768e+06  -8.4295375e+06      4s
+      45         89  -3.4644936e+06  -8.4281239e+06      4s
+      46         91  -3.6011453e+06  -8.4268796e+06      4s
+      47         93  -3.7285862e+06  -8.4254399e+06      4s
+      48         95  -3.8623207e+06  -8.4239676e+06      4s
+      49         97  -3.9861846e+06  -8.4226384e+06      4s
+
+Sifting complete
+
+
+Root relaxation: objective 8.389622e+06, 106 iterations, 0.22 seconds (0.14 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+      48         95  -3.8623207e+06  -8.4239676e+06      4s
+      49         97  -3.9861846e+06  -8.4226384e+06      4s
+
+Sifting complete
+
+
+Root relaxation: objective 8.389622e+06, 106 iterations, 0.22 seconds (0.14 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+      49         97  -3.9861846e+06  -8.4226384e+06      4s
+
+Sifting complete
+
+
+Root relaxation: objective 8.389622e+06, 106 iterations, 0.22 seconds (0.14 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+
+Sifting complete
+
+
+Root relaxation: objective 8.389622e+06, 106 iterations, 0.22 seconds (0.14 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+Sifting complete
+
+
+Root relaxation: objective 8.389622e+06, 106 iterations, 0.22 seconds (0.14 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+
+Root relaxation: objective 8.389622e+06, 106 iterations, 0.22 seconds (0.14 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+
+     0     0 8389621.93    0    2 7283784.22 8389621.93  15.2%     -    4s
+H    0     0                    8389092.1600 8389621.93  0.01%     -    4s
+
+     0     0 8389621.93    0    2 7283784.22 8389621.93  15.2%     -    4s
+H    0     0                    8389092.1600 8389621.93  0.01%     -    4s
+
+Explored 1 nodes (106 simplex iterations) in 4.55 seconds (2.12 work units)
+Thread count was 22 (of 22 available processors)
+
+Solution count 3: 8.38909e+06 7.28378e+06 7.01657e+06
+
+Explored 1 nodes (106 simplex iterations) in 4.55 seconds (2.12 work units)
+Thread count was 22 (of 22 available processors)
+
+Solution count 3: 8.38909e+06 7.28378e+06 7.01657e+06
+Explored 1 nodes (106 simplex iterations) in 4.55 seconds (2.12 work units)
+Thread count was 22 (of 22 available processors)
+
+Solution count 3: 8.38909e+06 7.28378e+06 7.01657e+06
+
+Optimal solution found (tolerance 1.00e-04)
+
+Solution count 3: 8.38909e+06 7.28378e+06 7.01657e+06
+
+Optimal solution found (tolerance 1.00e-04)
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 8.389092160022e+06, best bound 8.389621934455e+06, gap 0.0063%
+
+--- Gurobi 精确求解结果 ---
+✅ Gurobi 选中借款人数 = 5000
+✅ Gurobi 投资组合期望收益 = 8389092.16
+✅ Gurobi 计算的 VaR 上界 η = 47556800.00
+\end{lstlisting}
 \end{document}

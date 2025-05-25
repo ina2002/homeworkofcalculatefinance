@@ -22,8 +22,8 @@ np.random.seed(42)
 L = np.random.binomial(n=1, p=P_i[:, None], size=(N, S))
 
 # === Step 3: 参数设置 ===
-B = 1e8
-m = 30
+B = 100000000
+m = 5000
 beta = 0.95
 VaR_alpha = int((1 - beta) * S)
 

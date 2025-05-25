@@ -8,9 +8,9 @@
 \citation{byanjankar2021data}
 \@writefile{toc}{\contentsline {section}{\numberline {1}投资组合选择介绍}{2}{section.0.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2}模型建立}{2}{section.0.2}\protected@file@percent }
-\newlabel{eq:main_model}{{1}{3}{模型形式}{equation.0.2.1}{}}
-\newlabel{eq:var_model}{{2}{3}{模型形式}{equation.0.2.2}{}}
-\newlabel{eq:cvar_model}{{3}{4}{模型形式}{equation.0.2.3}{}}
+\newlabel{eq:main_model}{{{P2P}}{3}{模型形式}{AMS.4}{}}
+\newlabel{eq:var_model}{{{P2P-VaR}}{3}{模型形式}{AMS.5}{}}
+\newlabel{eq:cvar_model}{{{P2P-CVaR}}{4}{模型形式}{AMS.6}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}算法设计}{5}{section.0.3}\protected@file@percent }
 \@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces 启发式算法：贷款组合优化（含CVaR控制）}}{5}{algocf.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4}案例研究}{5}{section.0.4}\protected@file@percent }
@@ -19,23 +19,36 @@
 \newlabel{subsec:dataset_description}{{4.1}{5}{数据集描述}{subsection.0.4.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}使用机器学习预测违约概率 $P_i$}{6}{subsection.0.4.2}\protected@file@percent }
 \newlabel{subsec:predict_p_i}{{4.2}{6}{使用机器学习预测违约概率 $P_i$}{subsection.0.4.2}{}}
-\@writefile{toc}{\contentsline {paragraph}{建模目标}{6}{section*.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{特征构造}{6}{section*.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{建模方法}{7}{section*.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{训练与评估}{7}{section*.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{说明}{7}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{建模目标}{6}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{特征构造}{6}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{建模方法}{7}{section*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{训练与评估}{7}{section*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{说明}{7}{section*.11}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}使用算法求解原始模型, VaR模型与CVaR模型}{7}{subsection.0.4.3}\protected@file@percent }
 \newlabel{subsec:model_solving}{{4.3}{7}{使用算法求解原始模型, VaR模型与CVaR模型}{subsection.0.4.3}{}}
-\@writefile{toc}{\contentsline {paragraph}{原始模型（期望损失约束）}{7}{section*.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{VaR 模型（引入分位损失约束）}{7}{section*.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{CVaR 模型（引入条件期望损失约束）}{7}{section*.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{求解策略}{8}{section*.12}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}结果分析}{8}{subsection.0.4.4}\protected@file@percent }
-\newlabel{subsec:result_analysis}{{4.4}{8}{结果分析}{subsection.0.4.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}结论}{8}{section.0.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{原始模型（期望损失约束）}{7}{section*.12}\protected@file@percent }
+\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces 最大化期望回款的投资组合优化}}{8}{algocf.2}\protected@file@percent }
+\newlabel{alg:max_profit}{{2}{8}{原始模型（期望损失约束）}{algocf.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces 优化模型参数设置}}{8}{table.0.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces 最优组合中各等级贷款统计}}{8}{table.0.2}\protected@file@percent }
+\@writefile{loa}{\contentsline {algocf}{\numberline {3}{\ignorespaces 基于VaR约束的贷款组合优化（PSO + Gurobi）}}{9}{algocf.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces VaR 模型主要参数设置}}{10}{table.0.3}\protected@file@percent }
+\newlabel{tab:var-params}{{3}{10}{VaR 模型主要参数设置}{table.0.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces 基于VaR约束的优化结果对比}}{10}{table.0.4}\protected@file@percent }
+\newlabel{tab:var-results}{{4}{10}{基于VaR约束的优化结果对比}{table.0.4}{}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {4}{\ignorespaces 基于CVaR约束的贷款组合优化（PSO + Gurobi）}}{10}{algocf.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces 模型参数设置}}{11}{table.0.5}\protected@file@percent }
+\newlabel{tab:params}{{5}{11}{模型参数设置}{table.0.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces PSO 与 Gurobi 优化结果比较}}{11}{table.0.6}\protected@file@percent }
+\newlabel{tab:results}{{6}{11}{PSO 与 Gurobi 优化结果比较}{table.0.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}结果分析}{11}{subsection.0.4.4}\protected@file@percent }
+\newlabel{subsec:result_analysis}{{4.4}{11}{结果分析}{subsection.0.4.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}结论}{11}{section.0.5}\protected@file@percent }
 \bibstyle{unsrtnat}
 \bibdata{ref}
 \bibcite{wan2023hybrid}{{1}{2023}{{万洁 and 郝俊}}{{}}}
 \bibcite{guo2016instance}{{2}{2016}{{Guo et~al.}}{{Guo, Zhou, Luo, and et~al.}}}
 \bibcite{byanjankar2021data}{{3}{2021}{{Byanjankar et~al.}}{{Byanjankar, Mezei, and Heikkila}}}
-\gdef \@abspage@last{9}
+\@writefile{toc}{\contentsline {section}{\numberline {6}附录}{12}{section.0.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}VaR模型求解结果}{12}{subsection.0.6.1}\protected@file@percent }
+\gdef \@abspage@last{14}

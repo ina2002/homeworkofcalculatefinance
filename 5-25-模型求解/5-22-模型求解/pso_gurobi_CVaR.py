@@ -4,10 +4,10 @@ import numpy as np
 # === Step 1: 数据加载与预处理 ===
 df = pd.read_excel("Input_data.xlsx", sheet_name="Sheet1")
 df = df[df['estimated_default_prob'].notna()].copy()
-df['P_i'] = (1 - df['estimated_default_prob']).clip(0, 1)
+df['P_i'] = ( df['estimated_default_prob']).clip(0, 1)
 df['A_i'] = df['loan_amnt']
 df['r_i'] = df['int_rate'] / 100
-df['profit'] = df['A_i'] * (df['r_i'] * (1 - df['P_i']) - df['P_i'])
+df['profit'] = df['A_i'] * df['r_i'] * (1 - df['P_i']) 
 
 A_i = df['A_i'].values
 P_i = df['P_i'].values
@@ -109,3 +109,54 @@ cvar = eta + inv_tail * np.sum(xi)
 print("✅ PSO-CVaR 选中借款人 ID：", selected_ids)
 print("✅ PSO-CVaR 投资组合期望收益 =", selected_profits)
 print("✅ PSO-CVaR 风险值 CVaR =", cvar)
+
+
+from gurobipy import Model, GRB
+
+# === Step 9: 用 Gurobi 进一步优化 ===
+model = Model("CVaR_Optimization")
+model.setParam("OutputFlag", 0)
+
+x = model.addVars(N, vtype=GRB.BINARY, name="x")
+eta = model.addVar(lb=0, name="eta")
+xi = model.addVars(S, lb=0, name="xi")
+
+# 目标函数：期望收益 + 风险利用率激励
+model.setObjective(
+    sum(x[i] * profit_i[i] for i in range(N)) + 10000 * eta / R_max, GRB.MAXIMIZE
+)
+
+# 预算约束
+model.addConstr(sum(x[i] * A_i[i] for i in range(N)) <= B)
+
+# 个数约束
+model.addConstr(sum(x[i] for i in range(N)) <= m)
+
+# CVaR约束
+for s in range(S):
+    loss_s = sum(x[i] * L[i, s] for i in range(N))
+    model.addConstr(xi[s] >= loss_s - eta)
+
+model.addConstr(
+    eta + inv_tail * sum(xi[s] for s in range(S)) <= R_max
+)
+
+# 初始解
+for i in range(N):
+    x[i].Start = int(global_best[i])
+
+model.optimize()
+
+# === Step 10: 结果提取 ===
+selected_ids_gurobi = [df.iloc[i]['id'] for i in range(N) if x[i].X > 0.5]
+profit_gurobi = sum(profit_i[i] for i in range(N) if x[i].X > 0.5)
+loss_vector = np.dot(
+    np.array([x[i].X for i in range(N)]) * A_i, L
+)
+eta_val = np.percentile(loss_vector, beta * 100)
+xi_val = np.maximum(loss_vector - eta_val, 0)
+cvar_val = eta_val + inv_tail * np.sum(xi_val)
+
+print("📌 Gurobi 精调选中借款人 ID：", selected_ids_gurobi)
+print("📌 Gurobi 投资组合期望收益 =", profit_gurobi)
+print("📌 Gurobi 风险值 CVaR =", cvar_val)

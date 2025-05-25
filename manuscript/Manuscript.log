@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.5)  24 MAY 2025 21:55
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.5)  25 MAY 2025 14:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -576,7 +576,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 \Hy@SectionHShift=\skip94
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 22.
+Package hyperref Info: Option `colorlinks' set `true' on input line 23.
  (d:/texlive/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
 \labelindent=\skip95
@@ -653,20 +653,68 @@ LaTeX Info: Redefining \cite on input line 694.
 \c@exercise=\count362
 \c@prop=\count363
 \c@implication=\count364
- (d:/texlive/texlive/2024/texmf-dist/tex/latex/endnotes/endnotes.sty
+ (d:/texlive/texlive/2024/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count365
+\lst@gtempboxa=\box72
+\lst@token=\toks35
+\lst@length=\count366
+\lst@currlwidth=\dimen304
+\lst@column=\count367
+\lst@pos=\count368
+\lst@lostspace=\dimen305
+\lst@width=\dimen306
+\lst@newlines=\count369
+\lst@lineno=\count370
+\abovecaptionskip=\skip108
+\belowcaptionskip=\skip109
+\lst@maxwidth=\dimen307
+ (d:/texlive/texlive/2024/texmf-dist/tex/latex/listings/lstpatch.sty
+File: lstpatch.sty 2024/02/21 1.10 (Carsten Heinz)
+) (d:/texlive/texlive/2024/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2024/02/21 1.10 (Carsten Heinz)
+\c@lstnumber=\count371
+\lst@skipnumbers=\count372
+\lst@framebox=\box73
+) (d:/texlive/texlive/2024/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2024/02/21 1.10 listings configuration
+))
+Package: listings 2024/02/21 1.10 (Carsten Heinz)
+ (d:/texlive/texlive/2024/texmf-dist/tex/xelatex/xecjk/xeCJK-listings.sty
+Package: xeCJK-listings 2022/08/05 v3.9.1 xeCJK patch file for listings
+\l__xeCJK_listings_max_char_int=\count373
+\l__xeCJK_listings_flag_int=\count374
+) (d:/texlive/texlive/2024/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+ (d:/texlive/texlive/2024/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: xetex.def on input line 274.
+LaTeX Info: Redefining \color on input line 758.
+ (d:/texlive/texlive/2024/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
+Package xcolor Info: Model `RGB' extended on input line 1366.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+) (d:/texlive/texlive/2024/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2024/02/21 1.10 listings language file
+) (d:/texlive/texlive/2024/texmf-dist/tex/latex/endnotes/endnotes.sty
 Invalid UTF-8 byte or sequence at line 118 replaced by U+FFFD.
 Invalid UTF-8 byte or sequence at line 118 replaced by U+FFFD.
 Invalid UTF-8 byte or sequence at line 121 replaced by U+FFFD.
 Invalid UTF-8 byte or sequence at line 121 replaced by U+FFFD.
 Package: endnotes 2020-01-02 endnotes package
-\c@endnote=\count365
-\endnotesep=\dimen304
+\c@endnote=\count375
+\endnotesep=\dimen308
 \@enotes=\write3
 ) (d:/texlive/texlive/2024/texmf-dist/tex/latex/footmisc/footmisc.sty
 Package: footmisc 2023/07/05 v6.0f a miscellany of footnote facilities
-\FN@temptoken=\toks35
-\footnotemargin=\dimen305
-\@outputbox@depth=\dimen306
+\FN@temptoken=\toks36
+\footnotemargin=\dimen309
+\@outputbox@depth=\dimen310
 Package footmisc Info: Declaring symbol style bringhurst on input line 696.
 Package footmisc Info: Declaring symbol style chicago on input line 704.
 Package footmisc Info: Declaring symbol style wiley on input line 713.
@@ -674,107 +722,119 @@ Package footmisc Info: Declaring symbol style lamport-robust on input line 724.
 Package footmisc Info: Declaring symbol style lamport* on input line 744.
 Package footmisc Info: Declaring symbol style lamport*-robust on input line 765.
 )
-LaTeX Font Info:    Trying to load font information for T1+ppl on input line 100.
+LaTeX Font Info:    Trying to load font information for T1+ppl on input line 119.
  (d:/texlive/texlive/2024/texmf-dist/tex/latex/psnfss/t1ppl.fd
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
-) (./Manuscript.aux)
+)
+No file Manuscript.aux.
 \openout1 = `Manuscript.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
 
 Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
 (fontspec)             this).
 
 \symlegacymaths=\mathgroup9
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 100.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 100.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 100.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 100.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 100.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 100.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 100.
-LaTeX Font Info:    Redeclaring math accent \check on input line 100.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 100.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 100.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 100.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 100.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 100.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 119.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 119.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 119.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 119.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 119.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 119.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 119.
+LaTeX Font Info:    Redeclaring math accent \check on input line 119.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 119.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 119.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 119.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 119.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 119.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 119.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 119.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 119.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 119.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 119.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 119.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 119.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 119.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 119.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 119.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 119.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 100.
+(Font)              `operators' in the math version `normal' on input line 119.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/ppl/m/n on input line 100.
+(Font)                  OT1/cmr/m/n --> TU/ppl/m/n on input line 119.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 100.
+(Font)              `operators' in the math version `bold' on input line 119.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/ppl/m/n on input line 100.
+(Font)                  OT1/cmr/bx/n --> TU/ppl/m/n on input line 119.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/ppl/m/n --> TU/ppl/m/n on input line 100.
+(Font)                  TU/ppl/m/n --> TU/ppl/m/n on input line 119.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/ppl/m/it on input line 100.
+(Font)                  OT1/cmr/m/it --> TU/ppl/m/it on input line 119.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/ppl/b/n on input line 100.
+(Font)                  OT1/cmr/bx/n --> TU/ppl/b/n on input line 119.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/phv/m/n on input line 100.
+(Font)                  OT1/cmss/m/n --> TU/phv/m/n on input line 119.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/pcr/m/n on input line 100.
+(Font)                  OT1/cmtt/m/n --> TU/pcr/m/n on input line 119.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/ppl/m/n --> TU/ppl/b/n on input line 100.
+(Font)                  TU/ppl/m/n --> TU/ppl/b/n on input line 119.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/ppl/b/it on input line 100.
+(Font)                  OT1/cmr/bx/it --> TU/ppl/b/it on input line 119.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/phv/b/n on input line 100.
+(Font)                  OT1/cmss/bx/n --> TU/phv/b/n on input line 119.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/pcr/b/n on input line 100.
-Package hyperref Info: Link coloring ON on input line 100.
- (./Manuscript.out) (./Manuscript.out)
+(Font)                  OT1/cmtt/m/n --> TU/pcr/b/n on input line 119.
+Package hyperref Info: Link coloring ON on input line 119.
 \@outlinefile=\write4
 \openout4 = `Manuscript.out'.
 
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
+\c@lstlisting=\count376
 File: Figures/校徽.png Graphic file (type bmp)
 <Figures/校徽.png>
-LaTeX Font Info:    Trying to load font information for TU+ppl on input line 117.
-LaTeX Font Info:    No file TUppl.fd. on input line 117.
-
+LaTeX Font Info:    Trying to load font information for TU+ppl on input line 136.
+LaTeX Font Info:    No file TUppl.fd. on input line 136.
 
 LaTeX Font Warning: Font shape `TU/ppl/m/n' undefined
-(Font)              using `TU/lmr/m/n' instead on input line 117.
+(Font)              using `TU/lmr/m/n' instead on input line 136.
 
 [1
 
 ]
-LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 160.
- (d:/texlive/texlive/2024/texmf-dist/tex/latex/psnfss/ts1ppl.fd
+
+Package natbib Warning: Citation `wan2023hybrid' on page 2 undefined on input line 164.
+
+
+Package natbib Warning: Citation `guo2016instance' on page 2 undefined on input line 164.
+
+
+Package natbib Warning: Citation `byanjankar2021data' on page 2 undefined on input line 164.
+
+LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 179.
+(d:/texlive/texlive/2024/texmf-dist/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
 
@@ -791,7 +851,7 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 [3]
 
 LaTeX Font Warning: Font shape `TU/ppl/b/n' undefined
-(Font)              using `TU/ppl/m/n' instead on input line 228.
+(Font)              using `TU/ppl/m/n' instead on input line 250.
 
 
 Package fontspec Info: Could not resolve font "FangSong/BI" (it probably
@@ -805,7 +865,7 @@ Package fontspec Info: Could not resolve font "FangSong/B" (it probably
 Package fontspec Info: Could not resolve font "FangSong/I" (it probably
 (fontspec)             doesn't exist).
 
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 228.
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 250.
 (d:/texlive/texlive/2024/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
@@ -821,7 +881,7 @@ Package fontspec Info: Font family 'FangSong(0)' created for font 'FangSong'
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <11> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 245.
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 267.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -840,15 +900,15 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 [5]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 294.
+(hyperref)                removing `math shift' on input line 316.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 294.
+(hyperref)                removing `subscript' on input line 316.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 294.
+(hyperref)                removing `math shift' on input line 316.
 
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
@@ -856,6 +916,44 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{12.65999pt}.
 
 [6]
+Overfull \hbox (22.0pt too wide) detected at line 394
+[][] 
+ []
+
+
+LaTeX Warning: Reference `alg:max_profit' on page 7 undefined on input line 397.
+
+
+Package fontspec Info: Could not resolve font "Microsoft YaHei Bold/I" (it
+(fontspec)             probably doesn't exist).
+
+
+Package fontspec Info: Could not resolve font "Microsoft YaHei/I" (it probably
+(fontspec)             doesn't exist).
+
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 410.
+(d:/texlive/texlive/2024/texmf-dist/tex/latex/psnfss/t1phv.fd
+File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
+)
+
+Package fontspec Info: Font family 'MicrosoftYaHei(0)' created for font
+(fontspec)             'Microsoft YaHei' with options
+(fontspec)             [Script={CJK},BoldFont={* Bold}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"Microsoft
+(fontspec)             YaHei/OT:script=hani;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"Microsoft YaHei
+(fontspec)             Bold/OT:script=hani;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"Microsoft
+(fontspec)             YaHei/BI/OT:script=hani;language=dflt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
+
+
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
 (fancyhdr)                Make it at least 12.65999pt, for example:
@@ -867,8 +965,47 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                Make it at least 12.65999pt, for example:
 (fancyhdr)                \setlength{\footskip}{12.65999pt}.
 
-[8] (./Manuscript.bbl)
-\openout3 = `Manuscript.ent'.
+[8]
+
+LaTeX Warning: Reference `tab:var-results' on page 9 undefined on input line 509.
+
+
+LaTeX Warning: Reference `tab:params' on page 9 undefined on input line 569.
+
+
+LaTeX Warning: Reference `tab:results' on page 9 undefined on input line 571.
+
+
+Package fancyhdr Warning: \footskip is too small (0.0pt): 
+(fancyhdr)                Make it at least 12.65999pt, for example:
+(fancyhdr)                \setlength{\footskip}{12.65999pt}.
+
+[9]
+
+Package fancyhdr Warning: \footskip is too small (0.0pt): 
+(fancyhdr)                Make it at least 12.65999pt, for example:
+(fancyhdr)                \setlength{\footskip}{12.65999pt}.
+
+[10]
+
+Package fancyhdr Warning: \footskip is too small (0.0pt): 
+(fancyhdr)                Make it at least 12.65999pt, for example:
+(fancyhdr)                \setlength{\footskip}{12.65999pt}.
+
+[11] (./Manuscript.bbl)
+Missing character: There is no ⚙ ("2699) in font pcrr8t!
+Missing character: There is no ️ (U+FE0F) in font FangSong/OT:script=hani;language=dflt;!
+Missing character: There is no ✅ ("2705) in font pcrr8t!
+Missing character: There is no ✅ ("2705) in font pcrr8t!
+Missing character: There is no ✅ ("2705) in font pcrr8t!
+Missing character: There is no η ("3B7) in font pcrr8t!
+
+Package fancyhdr Warning: \footskip is too small (0.0pt): 
+(fancyhdr)                Make it at least 12.65999pt, for example:
+(fancyhdr)                \setlength{\footskip}{12.65999pt}.
+
+[12]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
@@ -876,25 +1013,57 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                Make it at least 12.65999pt, for example:
 (fancyhdr)                \setlength{\footskip}{12.65999pt}.
 
-[9] (./Manuscript.aux)
+[13]
+Missing character: There is no ✅ ("2705) in font pcrr8t!
+Missing character: There is no ✅ ("2705) in font pcrr8t!
+Missing character: There is no ✅ ("2705) in font pcrr8t!
+Missing character: There is no η ("3B7) in font pcrr8t!
+
+Package natbib Warning: There were undefined citations.
+
+\openout3 = `Manuscript.ent'.
+
+
+Package fancyhdr Warning: \footskip is too small (0.0pt): 
+(fancyhdr)                Make it at least 12.65999pt, for example:
+(fancyhdr)                \setlength{\footskip}{12.65999pt}.
+
+[14] (./Manuscript.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
  ***********
 LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2022/07/14>
+L3 programming layer <2022/08/05>
  ***********
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package rerunfilecheck Info: File `Manuscript.out' has not changed.
-(rerunfilecheck)             Checksum: 1F4CBBFE37F7005B01534769E5616F92;999.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `Manuscript.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Manuscript.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  3CE5E19524C934F5E897C3C972B97156;1186.
  ) 
 Here is how much of TeX's memory you used:
- 19598 strings out of 474773
- 393844 string characters out of 5757730
- 1944842 words of memory out of 5000000
- 41416 multiletter control sequences out of 15000+600000
- 592368 words of font info for 145 fonts, out of 8000000 for 9000
+ 21812 strings out of 474773
+ 432298 string characters out of 5757730
+ 2519842 words of memory out of 5000000
+ 43597 multiletter control sequences out of 15000+600000
+ 597553 words of font info for 152 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 93i,15n,97p,398b,636s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,15n,97p,398b,1954s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Manuscript.pdf (9 pages).
+Output written on Manuscript.pdf (14 pages).

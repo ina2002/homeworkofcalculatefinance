@@ -1,0 +1,1 @@
+df['P_i'] = 1 - df['estimated_default_prob']
