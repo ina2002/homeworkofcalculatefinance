@@ -1,0 +1,18 @@
+\contentsline {section}{\numberline {1}投资组合选择介绍}{3}{section.0.1}%
+\contentsline {section}{\numberline {2}模型建立}{3}{section.0.2}%
+\contentsline {subsection}{\numberline {2.1}风险度量方法简介：VaR 与 CVaR}{3}{subsection.0.2.1}%
+\contentsline {paragraph}{VaR（Value at Risk）}{4}{section*.3}%
+\contentsline {paragraph}{CVaR（Conditional Value at Risk）}{4}{section*.4}%
+\contentsline {subsection}{\numberline {2.2}模型设定与参数说明}{4}{subsection.0.2.2}%
+\contentsline {subsection}{\numberline {2.3}模型构建}{4}{subsection.0.2.3}%
+\contentsline {section}{\numberline {3}算法设计}{6}{section.0.3}%
+\contentsline {subsection}{\numberline {3.1}粒子群优化算法（PSO）}{6}{subsection.0.3.1}%
+\contentsline {subsection}{\numberline {3.2}PSO 与 Gurobi 联合优化框架}{7}{subsection.0.3.2}%
+\contentsline {section}{\numberline {4}案例研究}{7}{section.0.4}%
+\contentsline {subsection}{\numberline {4.1}数据集描述}{7}{subsection.0.4.1}%
+\contentsline {subsection}{\numberline {4.2}使用机器学习预测违约概率 $P_i$}{8}{subsection.0.4.2}%
+\contentsline {subsection}{\numberline {4.3}三类优化模型的构建与求解}{9}{subsection.0.4.3}%
+\contentsline {subsection}{\numberline {4.4}结果分析}{11}{subsection.0.4.4}%
+\contentsline {section}{\numberline {5}结论与启示}{13}{section.0.5}%
+\contentsline {section}{小组分工}{14}{section*.18}%
+\contentsline {section}{参考文献}{14}{section*.18}%

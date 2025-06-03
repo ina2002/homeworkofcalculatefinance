@@ -4,7 +4,7 @@ import os
 from gurobipy import Model, GRB
 
 # === Step 1: 数据加载与预处理 ===
-df = pd.read_excel("5-25-模型求解/Input_data.csv")
+df = pd.read_excel("code/Input_data.csv")
 df['A_i'] = df['loan_amnt']
 df['P_i'] = df['estimated_default_prob']
 df['r_i'] = df['int_rate'] / 100
@@ -97,10 +97,10 @@ if not os.path.exists("5-22-模型求解/global_best.npy") or \
             sigmoid = 1 / (1 + np.exp(-velocities[i]))
             positions[i] = (np.random.rand(N) < sigmoid).astype(int)
 
-    np.save("5-25-模型求解/global_best.npy", global_best)
+    np.save("code/global_best.npy", global_best)
 else:
     print("✅ 发现已有 global_best.npy，直接载入")
-    global_best = np.load("5-25-模型求解/global_best.npy")
+    global_best = np.load("code/global_best.npy")
 
 # === PSO结果展示 ===
 selected_indices = np.where(global_best == 1)[0]
@@ -162,7 +162,7 @@ df_pso['selected'] = 1
 df_pso['method'] = 'PSO'
 df_pso['eta'] = eta_final
 df_pso['profit'] = profit_i[selected_indices]
-df_pso.to_csv("5-25-模型求解/result_VaR_PSO_selected_loans.csv", index=False)
+df_pso.to_csv("code/result_VaR_PSO_selected_loans.csv", index=False)
 
 # === 保存 Gurobi 优化结果 ===
 if model.status in [GRB.OPTIMAL, GRB.SUBOPTIMAL]:
@@ -171,4 +171,64 @@ if model.status in [GRB.OPTIMAL, GRB.SUBOPTIMAL]:
     df_gurobi['method'] = 'Gurobi'
     df_gurobi['eta'] = eta_val
     df_gurobi['profit'] = profit_i[selected]
-    df_gurobi.to_csv("5-25-模型求解/result_VaR_result_Gurobi_selected_loans.csv", index=False)
+    df_gurobi.to_csv("code/result_VaR_result_Gurobi_selected_loans.csv", index=False)
+
+
+
+# === 标准化 PSO 输出 CSV ===
+df['selected_by_pso'] = 0
+df.loc[selected_indices, 'selected_by_pso'] = 1
+df['expected_profit'] = df['A_i'] * df['r_i'] * (1 - df['P_i'])
+
+df_pso_output = df.loc[selected_indices, ['id', 'loan_amnt', 'int_rate', 'estimated_default_prob', 'expected_profit']]
+summary_pso = pd.DataFrame({
+    'id': ['Total'],
+    'loan_amnt': [df.loc[selected_indices, 'loan_amnt'].sum()],
+    'int_rate': [None],
+    'estimated_default_prob': [None],
+    'expected_profit': [selected_profits]
+})
+var_row_pso = pd.DataFrame({
+    'id': ['VaR'],
+    'loan_amnt': [None],
+    'int_rate': [None],
+    'estimated_default_prob': [None],
+    'expected_profit': [eta_final]
+})
+df_pso_output = pd.concat([df_pso_output, summary_pso, var_row_pso], ignore_index=True)
+df_pso_output.to_csv("code/result_VaR_PSO_selected_loans.csv", index=False)
+print("✅ PSO结果已保存至 result_VaR_PSO_selected_loans.csv")
+
+# === 标准化 Gurobi 输出 CSV ===
+if model.status in [GRB.OPTIMAL, GRB.SUBOPTIMAL]:
+    df['selected_by_gurobi'] = 0
+    df.loc[selected, 'selected_by_gurobi'] = 1
+
+    df_gurobi_output = df.loc[selected, ['id', 'loan_amnt', 'int_rate', 'estimated_default_prob', 'expected_profit']]
+    summary_gurobi = pd.DataFrame({
+        'id': ['Total'],
+        'loan_amnt': [df.loc[selected, 'loan_amnt'].sum()],
+        'int_rate': [None],
+        'estimated_default_prob': [None],
+        'expected_profit': [total_profit]
+    })
+    var_row_gurobi = pd.DataFrame({
+        'id': ['VaR'],
+        'loan_amnt': [None],
+        'int_rate': [None],
+        'estimated_default_prob': [None],
+        'expected_profit': [eta_val]
+    })
+    df_gurobi_output = pd.concat([df_gurobi_output, summary_gurobi, var_row_gurobi], ignore_index=True)
+    df_gurobi_output.to_csv("code/result_VaR_Gurobi_selected_loans.csv", index=False)
+    print("✅ Gurobi结果已保存至 result_VaR_Gurobi_selected_loans.csv")
+
+    # === 输出摘要 TXT ===
+    with open("code/gurobi_VaR_summary.txt", "w") as f:
+        f.write("📌 Gurobi 最终求解摘要\n")
+        f.write("---------------------------------------------------\n")
+        f.write(f"总投资额: {np.sum(x[i].X * A_i[i] for i in range(N)):.2f} / {B:.2f}\n")
+        f.write(f"总选择人数: {np.sum(x[i].X for i in range(N)):.0f} / {m}\n")
+        f.write(f"投资组合期望收益: {total_profit:.2f}\n")
+        f.write(f"VaR 上界 η (95%置信): {eta_val:.2f} / {max_eta:.2f}\n")
+    print("✅ Gurobi求解摘要已保存至 gurobi_VaR_summary.txt")

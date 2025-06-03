@@ -3,7 +3,7 @@ import numpy as np
 from gurobipy import Model, GRB
 
 # === Step 1: 数据加载与预处理 ===
-df = pd.read_excel("5-25-模型求解/Input_data.csv", sheet_name="Sheet1")
+df = pd.read_excel("code/Input_data.csv", sheet_name="Sheet1")
 df = df[df['estimated_default_prob'].notna()].copy()
 df['P_i'] = df['estimated_default_prob'].clip(0, 1)
 df['A_i'] = df['loan_amnt']
@@ -14,6 +14,16 @@ A_i = df['A_i'].values
 P_i = df['P_i'].values
 profit_i = df['profit'].values
 N = len(df)
+
+# 4. 分组与参数
+group_dict = df.groupby('grade').groups
+N = len(df)
+
+
+alpha_k = {         # 信用等级投资比例上限
+    'A': 0.4, 'B': 0.3, 'C': 0.2,
+    'D': 0.1, 'E': 0.05, 'F': 0.02, 'G': 0.01
+}
 
 # === Step 2: 蒙特卡洛模拟损失矩阵（只含0/1违约，不乘金额）===
 S = 1000
@@ -123,6 +133,13 @@ model.setObjective(
 
 model.addConstr(sum(x[i] * A_i[i] for i in range(N)) <= B)
 model.addConstr(sum(x[i] for i in range(N)) <= m)
+# 信用等级比例约束
+for grade, idx_list in group_dict.items():
+    if grade in alpha_k:
+        model.addConstr(
+            sum(x[i] * df.loc[i, 'A_i'] for i in idx_list) <= alpha_k[grade] * B,
+            f"Grade_{grade}_Limit"
+        )
 
 for s in range(S):
     loss_expr = sum(x[i] * A_i[i] * L[i, s] for i in range(N))
@@ -134,64 +151,48 @@ model.addConstr(
 
 for i in range(N):
     x[i].Start = int(global_best[i])
-
+model.setParam("LogFile", "code/gurobi_CVaR_log.txt")
 model.optimize()
 
 # === Step 10: Gurobi 结果提取 ===
 x_array = np.array([x[i].X for i in range(N)])
 profit_gurobi = np.sum(profit_i * (x_array > 0.5))
 
+# 风险计算
 loss_vector = (L.T @ (x_array * A_i)).flatten()
 eta_val = np.percentile(loss_vector, beta * 100)
 xi_val = np.maximum(loss_vector - eta_val, 0)
 cvar_val = eta_val + inv_tail * np.sum(xi_val)
 
+# 约束验证
+actual_total_investment = np.sum(x_array * A_i)
+actual_total_selection = np.sum(x_array)
+
 print("📌 Gurobi 投资组合期望收益 =", profit_gurobi)
 print("📌 Gurobi 风险值 CVaR =", cvar_val)
+print("📌 总投资额 =", actual_total_investment)
+print("📌 总选择人数 =", actual_total_selection)
 
-# === Step 11: 保存结果 CSV ===
-# PSO
-selected_df_pso = df.iloc[selected_indices].copy()
-selected_df_pso = selected_df_pso[['id', 'loan_amnt', 'int_rate', 'estimated_default_prob']]
-selected_df_pso['profit'] = selected_df_pso['loan_amnt'] * selected_df_pso['int_rate'] / 100 * (1 - selected_df_pso['estimated_default_prob'])
+# === Step 11: 保存完整明细 CSV ===
+df['selected_by_gurobi'] = x_array
+df['expected_profit'] = df['A_i'] * df['r_i'] * (1 - df['P_i'])
 
-summary_row_pso = pd.DataFrame({
-    'id': ['Total'],
-    'loan_amnt': [selected_df_pso['loan_amnt'].sum()],
-    'int_rate': [None],
-    'estimated_default_prob': [None],
-    'profit': [selected_profits]
-})
-cvar_row_pso = pd.DataFrame({
-    'id': ['CVaR'],
-    'loan_amnt': [None],
-    'int_rate': [None],
-    'estimated_default_prob': [None],
-    'profit': [cvar]
-})
-selected_df_pso = pd.concat([selected_df_pso, summary_row_pso, cvar_row_pso], ignore_index=True)
-selected_df_pso.to_csv("5-25-模型求解/result_CVaR_PSO_selected_loans.csv", index=False)
-print("✅ PSO结果已保存至 result_CVaR_PSO_selected_loans.csv")
+detailed_output = df[['id', 'loan_amnt', 'int_rate', 'estimated_default_prob', 
+                      'selected_by_gurobi', 'expected_profit']]
+detailed_output.to_csv("code/result_CVaR_Gurobi_detailed_output.csv", index=False)
+print("✅ Gurobi详细结果已保存至 result_CVaR_Gurobi_detailed_output.csv")
 
-# Gurobi
-selected_df = df.iloc[[i for i in range(N) if x[i].X > 0.5]].copy()
-selected_df = selected_df[['id', 'loan_amnt', 'int_rate', 'estimated_default_prob']]
-selected_df['profit'] = selected_df['loan_amnt'] * selected_df['int_rate'] / 100 * (1 - selected_df['estimated_default_prob'])
+# === Step 12: 保存简要摘要 TXT ===
+with open("code/gurobi_CVaR_summary.txt", "w") as f:
+    f.write("📌 Gurobi 最终求解摘要\n")
+    f.write("---------------------------------------------------\n")
+    f.write(f"总投资额: {actual_total_investment:.2f} / {B:.2f}\n")
+    f.write(f"总选择人数: {actual_total_selection} / {m}\n")
+    f.write(f"投资组合期望收益: {profit_gurobi:.2f}\n")
+    f.write(f"CVaR (β={beta}): {cvar_val:.2f} / {R_max:.2f}\n")
+print("✅ Gurobi求解摘要已保存至 gurobi_CVaR_summary.txt")
 
-summary_row = pd.DataFrame({
-    'id': ['Total'],
-    'loan_amnt': [selected_df['loan_amnt'].sum()],
-    'int_rate': [None],
-    'estimated_default_prob': [None],
-    'profit': [profit_gurobi]
-})
-cvar_row = pd.DataFrame({
-    'id': ['CVaR'],
-    'loan_amnt': [None],
-    'int_rate': [None],
-    'estimated_default_prob': [None],
-    'profit': [cvar_val]
-})
-selected_df = pd.concat([selected_df, summary_row, cvar_row], ignore_index=True)
-selected_df.to_csv("5-25-模型求解/result_CVaR_Gurobi_selected_loans.csv", index=False)
-print("✅ Gurobi结果已保存至 result_CVaR_Gurobi_selected_loans.csv")
+# === Step 13: 可选启用日志文件（提前设置） ===
+# 如果希望将整个求解过程写入日志：
+# 请在 model 创建之后添加此行：
+# model.setParam("LogFile", "code/gurobi_CVaR_log.txt")

@@ -33,7 +33,7 @@ model = Model("MaxExpectedRepayment")
 
 x = model.addVars(N, vtype=GRB.BINARY, name="x")
 
-# 6. 设置目标函数：最大化 A_i × [r_i × (1 - P_i) - P_i]
+# 6. 设置目标函数：最大化 A_i × [r_i × (1 - P_i) ]
 model.setObjective(
     sum(x[i] * df.loc[i, 'A_i'] * (df.loc[i, 'r_i'] * (1 - df.loc[i, 'P_i']) ) for i in range(N)),
     GRB.MAXIMIZE
@@ -70,9 +70,9 @@ if model.status == GRB.OPTIMAL:
                 for i in range(N) if x[i].X > 0.5]
 
     result_df = pd.DataFrame(selected, columns=["ID", "Loan_Amount", "Grade", "Interest_Rate", "Default_Prob"])
-    result_df.to_csv("code/result_selected_investments_max_profit.csv", index=False)
+    result_df.to_csv("code/primal-result.csv", index=False)
 
-    print("✅ 最优贷款组合已保存至 'result_selected_investments_max_profit.csv'")
+    print("✅ 最优贷款组合已保存至 'primal-result.csv'")
     print(f"目标函数值（期望净收益）: {model.objVal:,.2f}")
     print(f"选择的贷款数量: {len(selected)}")
     print(f"总投资金额: {sum(row[1] for row in selected):,.2f}")
@@ -91,3 +91,22 @@ else:
         print("模型不可行，请检查约束条件")
     elif model.status == GRB.UNBOUNDED:
         print("模型无界，请检查目标函数或约束设置")
+
+# === 保存 Gurobi 求解摘要 ===
+with open("code/primal_summary.txt", "w", encoding="utf-8") as f:
+    f.write("📌 Gurobi 最优解摘要\n")
+    f.write("--------------------------------------------------\n")
+    f.write(f"目标函数值（期望净收益）: {model.objVal:,.2f}\n")
+    f.write(f"选择的贷款数量: {len(selected)}\n")
+    f.write(f"总投资金额: {sum(row[1] for row in selected):,.2f}\n")
+    f.write(f"总期望损失: {sum(df.loc[i, 'A_i'] * df.loc[i, 'P_i'] for i in range(N) if x[i].X > 0.5):,.2f}\n")
+    f.write("\n📊 按等级统计:\n")
+    for grade in sorted(alpha_k.keys()):
+        grade_ids = group_dict.get(grade, [])
+        selected_ids = [i for i in grade_ids if x[i].X > 0.5]
+        total = sum(df.loc[i, 'A_i'] for i in selected_ids)
+        count = len(selected_ids)
+        ratio = total / B if B > 0 else 0
+        f.write(f"  - 等级 {grade}: {count} 个贷款, 投资总额 = {total:,.2f}, 占比 = {ratio:.2%}\n")
+
+print("📄 Gurobi 摘要信息已保存至 'primal_summary.txt'")

@@ -800,32 +800,53 @@
 \jot=0.3em %(LaTeX standard)% in prod. 0.6em
 \topsep10\p@ \@plus2\p@ \@minus5\p@
 %%%%%%%%%%%%%%%%%%%%%%-e-Standard sizes and penalties
-
 \newcounter{figure}
 \renewcommand\thefigure{\@arabic\c@figure}
 \def\fps@figure{tbp}
 \def\ftype@figure{1}
 \def\ext@figure{lof}
-\def\fnum@figure{{Figure\hskip0.3em\thefigure}}%% may be redefined by the particular style
+\def\fnum@figure{图\hskip0.5em\thefigure :}
+
+% 图标题格式：宋体、小五、居中
+\long\def\@makefigurecaption#1#2{%
+  \vskip\abovecaptionskip
+  \begin{center}%
+    {\songti\zihao{-5}#1 #2}%
+  \end{center}%
+  \vskip\belowcaptionskip
+}
+
 \newenvironment{figure}
   {\let\@makecaption\@makefigurecaption\@float{figure}}
   {\end@float}
 \newenvironment{figure*}
   {\let\@makecaption\@makefigurecaption\@dblfloat{figure}}
   {\end@dblfloat}
-%
+
+% 表计数与格式（如需“表x”可修改name）
 \newcounter{table}
 \renewcommand\thetable{\@arabic\c@table}
 \def\fps@table{tbp}
 \def\ftype@table{2}
 \def\ext@table{lot}
-\def\fnum@table{Table\hskip0.3em\thetable}%% may be redefined by the particular style
+\def\fnum@table{表\hskip0.5em\thetable :}
+
+% 表标题格式：宋体、小五、居中
+\long\def\@maketablecaption#1#2{%
+  \vskip\abovecaptionskip
+  \begin{center}%
+    {\songti\zihao{-5}#1 #2}%
+  \end{center}%
+  \vskip\belowcaptionskip
+}
+
 \newenvironment{table}
   {\let\@makecaption\@maketablecaption\@float{table}}
   {\end@float}
 \newenvironment{table*}
   {\let\@makecaption\@maketablecaption\@dblfloat{table}}
   {\end@dblfloat}
+
 
 \newcommand\@pnumwidth{1.55em}
 \newcommand\@tocrmarg{2.55em}
