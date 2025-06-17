@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.5)  3 JUN 2025 14:54
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.5)  17 JUN 2025 13:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1113,11 +1113,7 @@ LaTeX Font Warning: Font shape `TU/ppl/m/n' undefined
 
 [1
 
-] (./Manuscript.toc)
-\tf@toc=\write6
-\openout6 = `Manuscript.toc'.
-
-
+]
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
 (fancyhdr)                Make it at least 12.65999pt, for example:
@@ -1126,14 +1122,8 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 [2]
 
 LaTeX Font Warning: Font shape `TU/ppl/m/it' undefined
-(Font)              using `TU/ppl/m/n' instead on input line 193.
+(Font)              using `TU/ppl/m/n' instead on input line 195.
 
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 12.65999pt, for example:
-(fancyhdr)                \setlength{\footskip}{12.65999pt}.
-
-[3]
 
 Package fontspec Info: Could not resolve font "Microsoft YaHei Bold/I" (it
 (fontspec)             probably doesn't exist).
@@ -1142,8 +1132,8 @@ Package fontspec Info: Could not resolve font "Microsoft YaHei Bold/I" (it
 Package fontspec Info: Could not resolve font "Microsoft YaHei/I" (it probably
 (fontspec)             doesn't exist).
 
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 211.
- (d:/texlive/texlive/2024/texmf-dist/tex/latex/psnfss/t1phv.fd
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 212.
+(d:/texlive/texlive/2024/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 )
 
@@ -1170,30 +1160,21 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                Make it at least 12.65999pt, for example:
 (fancyhdr)                \setlength{\footskip}{12.65999pt}.
 
+[3]
+
+Package fancyhdr Warning: \footskip is too small (0.0pt): 
+(fancyhdr)                Make it at least 12.65999pt, for example:
+(fancyhdr)                \setlength{\footskip}{12.65999pt}.
+
 [4]
-Underfull \vbox (badness 1642) has occurred while \output is active []
-
-
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
 (fancyhdr)                Make it at least 12.65999pt, for example:
 (fancyhdr)                \setlength{\footskip}{12.65999pt}.
 
 [5]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 12.65999pt, for example:
-(fancyhdr)                \setlength{\footskip}{12.65999pt}.
-
-[6]
-Missing character: There is no 🚀 ("1F680) in font pplr8t!
-Missing character: There is no 🐦 ("1F426) in font pplr8t!
-Missing character: There is no 🧠 ("1F9E0) in font pplr8t!
-Missing character: There is no 🌟 ("1F31F) in font pplr8t!
-Missing character: There is no 🧮 ("1F9EE) in font pplr8t!
-Missing character: There is no 📊 ("1F4CA) in font pplr8t!
-LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 346.
-(d:/texlive/texlive/2024/texmf-dist/tex/latex/psnfss/ts1ppl.fd
+LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 342.
+ (d:/texlive/texlive/2024/texmf-dist/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
 
@@ -1208,7 +1189,7 @@ Package fontspec Info: Could not resolve font "FangSong/B" (it probably
 Package fontspec Info: Could not resolve font "FangSong/I" (it probably
 (fontspec)             doesn't exist).
 
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 359.
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 361.
  (d:/texlive/texlive/2024/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
@@ -1229,22 +1210,32 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                Make it at least 12.65999pt, for example:
 (fancyhdr)                \setlength{\footskip}{12.65999pt}.
 
-[7]
+[6]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 418.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 418.
+(hyperref)                removing `math shift' on input line 420.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 418.
+(hyperref)                removing `subscript' on input line 420.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 420.
 
 
 LaTeX Font Warning: Font shape `TU/ppl/b/n' undefined
-(Font)              using `TU/ppl/m/n' instead on input line 424.
+(Font)              using `TU/ppl/m/n' instead on input line 426.
+
+
+Package fancyhdr Warning: \footskip is too small (0.0pt): 
+(fancyhdr)                Make it at least 12.65999pt, for example:
+(fancyhdr)                \setlength{\footskip}{12.65999pt}.
+
+[7]
+Underfull \hbox (badness 1122) in paragraph at lines 439--440
+\TU/SimSun(0)/m/n/11 为 系 统 刻 画 贷 款 投 资 组 合 在 收 益 最 大 化 与 风 险 控 制 之 间 的 权 衡 关 系，|  本 文 依 托 模 型 []\T1/ppl/m/n/11 --
+ []
 
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
@@ -1252,34 +1243,29 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                \setlength{\footskip}{12.65999pt}.
 
 [8]
-Overfull \hbox (21.07874pt too wide) detected at line 469
+Overfull \hbox (21.07874pt too wide) detected at line 465
 [][] 
  []
 
+
+Overfull \hbox (21.07874pt too wide) detected at line 497
+[][] 
+ []
+
+File: Figures/model_comparison_scatter.png Graphic file (type bmp)
+<Figures/model_comparison_scatter.png>
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
 (fancyhdr)                Make it at least 12.65999pt, for example:
 (fancyhdr)                \setlength{\footskip}{12.65999pt}.
 
 [9]
-Overfull \hbox (21.07874pt too wide) detected at line 501
-[][] 
- []
-
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
 (fancyhdr)                Make it at least 12.65999pt, for example:
 (fancyhdr)                \setlength{\footskip}{12.65999pt}.
 
 [10]
-
-Package fancyhdr Warning: \footskip is too small (0.0pt): 
-(fancyhdr)                Make it at least 12.65999pt, for example:
-(fancyhdr)                \setlength{\footskip}{12.65999pt}.
-
-[11]
-File: Figures/model_comparison_scatter.png Graphic file (type bmp)
-<Figures/model_comparison_scatter.png>
 File: Figures/model_comparison_expected_profit_boxplot.png Graphic file (type bmp)
 <Figures/model_comparison_expected_profit_boxplot.png>
 File: Figures/model_comparison_loan_amount_boxplot.png Graphic file (type bmp)
@@ -1290,17 +1276,40 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 (fancyhdr)                Make it at least 12.65999pt, for example:
 (fancyhdr)                \setlength{\footskip}{12.65999pt}.
 
-[12] (./Manuscript.bbl
+[11]
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
 (fancyhdr)                Make it at least 12.65999pt, for example:
 (fancyhdr)                \setlength{\footskip}{12.65999pt}.
 
-[13])
+[12] (./Manuscript.bbl)
 \openout4 = `Manuscript.ent'.
 
 
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
 (fancyhdr)                Make it at least 12.65999pt, for example:
-(fancyhdr)                \setlength{\footskip}{12.65999pt}
+(fancyhdr)                \setlength{\footskip}{12.65999pt}.
+
+[13] (./Manuscript.aux)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2022/08/05>
+ ***********
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+Package rerunfilecheck Info: File `Manuscript.out' has not changed.
+(rerunfilecheck)             Checksum: BF09584ED0BEEBDAE70B37EA5A43A9F7;1872.
+ ) 
+Here is how much of TeX's memory you used:
+ 37102 strings out of 474773
+ 809112 string characters out of 5757730
+ 1960842 words of memory out of 5000000
+ 58621 multiletter control sequences out of 15000+600000
+ 601525 words of font info for 178 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 93i,13n,97p,496b,810s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on Manuscript.pdf (13 pages).

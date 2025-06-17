@@ -1,0 +1,35 @@
+\begin{thebibliography}{4}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax\else
+  \urlstyle{same}\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \DeclareUrlCommand\doi{\urlstyle{rm}}
+  \def\eprint#1#2{#2}
+\else
+  \def\doi#1{\href{https://doi.org/#1}{\nolinkurl{#1}}}
+  \let\eprint\href
+\fi
+
+\bibitem[万洁\ 等(2023)万洁 and 郝俊]{wan2023hybrid}
+万洁, 郝俊. 2023.
+\newblock 基于混合治愈模型的网络借贷投资组合决策模型与实证研究\allowbreak[J].
+\newblock 系统科学与数学, 43\allowbreak (5): 1138-1156.
+
+\bibitem[Byanjankar et~al.(2021)Byanjankar, Mezei, and Heikkila]{byanjankar2021data}
+BYANJANKAR A, MEZEI J, HEIKKILA M. 2021.
+\newblock Data-driven optimization of peer-to-peer lending portfolios based on the expected value framework\allowbreak[J].
+\newblock Intelligent Systems in Accounting, Finance and Management, 28\allowbreak (2): 119-129.
+
+\bibitem[Guo et~al.(2016)Guo, Zhou, Luo, and et~al.]{guo2016instance}
+GUO Y, ZHOU W, LUO C, et~al. 2016.
+\newblock Instance-based credit risk assessment for investment decisions in p2p lending\allowbreak[J].
+\newblock European Journal of Operational Research, 249\allowbreak (2): 417-426.
+
+\bibitem[Kennedy et~al.(1995)Kennedy and Eberhart]{kennedy1995particle}
+KENNEDY J, EBERHART R. 1995.
+\newblock Particle swarm optimization\allowbreak[C]//\allowbreak
+Proceedings of ICNN'95 - International Conference on Neural Networks: Vol.~4.
+\newblock IEEE: 1942-1948.
+
+\end{thebibliography}
